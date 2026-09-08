@@ -1,1 +1,8 @@
-{\n  \ name\: \quill-labs-in\,\n  \compatibility_date\: \2026-09-08\,\n  \workers_dev\: true,\n  \assets\: {\n    \directory\: \./\\n  }\n}
+{
+  "name": "quill-labs-in",
+  "compatibility_date": "2026-09-08",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./"
+  }
+}
