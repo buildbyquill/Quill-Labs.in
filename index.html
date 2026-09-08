@@ -262,11 +262,29 @@
     <section class="section section--tint">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Sample work</span>
-          <h2>Concept builds, done our way.</h2>
-          <p class="lede">Until real client projects ship, we show sample work — built with the same method we'd use on yours.</p>
+          <span class="eyebrow">Selected work</span>
+          <h2>Systems built for real businesses.</h2>
+          <p class="lede">A selection of client work and concept builds, all built around the gap between attention and revenue.</p>
         </div>
         <div class="work-grid" data-cms-work-cards data-track="all" data-limit="3">
+          <div class="reveal" data-delay="0">
+            <article class="work-card work-card--featured">
+              <a class="work-card__thumb" href="https://destinylaboratories.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Destiny Laboratories website">
+                <img src="./v1home_files/Screenshot 2026-09-03 170422.png" alt="Destiny Laboratories pharmaceutical website designed by Quill Labs" width="1898" height="917" loading="lazy">
+                <span class="tag tag--business work-card__badge">Client project</span>
+              </a>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="tag tag--business">Local Business Launch</span>
+                  <span class="mono-label">Motion Website + WhatsApp</span>
+                </div>
+                <h3>Destiny Laboratories</h3>
+                <p>A trust-led pharmaceutical website that presents the brand, product portfolio, and therapeutic expertise with a clear path to enquiry.</p>
+                <p class="outcome"><span>→</span> A modern digital presence with useful WhatsApp integration.</p>
+              </div>
+            </article>
+          </div>
+
           <div class="reveal" data-delay="0">
             <article class="work-card">
               <a class="work-card__thumb" href="v1 contact.html" aria-label="Enquire about Dental Clinic">
@@ -320,6 +338,11 @@
             </article>
           </div>
         </div>
+        <figure class="client-review reveal" data-delay="1">
+          <div class="client-review__stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>“Really happy with the website developed by QUILL LABS. The final website was exactly what we wanted and much better than the old template we were using. All the features we needed were included, especially the WhatsApp integration, which is very useful for our business.<br><br>The team understood our requirements well and made the whole process easy. Very happy with the final result. 5 stars!”</blockquote>
+          <figcaption><strong>Amit Rajan</strong><span>Owner, Destiny Laboratories — Ranchi</span></figcaption>
+        </figure>
         <div class="section-cta">
           <a class="btn btn--ink" href="v1 ourprocess.html#projects">View all sample work →</a>
         </div>
@@ -431,22 +454,9 @@
     </div>
   </footer>
 
-  <!-- Custom Cursor -->
-  <div class="cursor">
-    <div class="cursor__ball cursor__ball--big ">
-      <svg height="30" width="30">
-        <circle cx="15" cy="15" r="12" stroke-width="0"></circle>
-      </svg>
-    </div>
-    
-    <div class="cursor__ball cursor__ball--small">
-      <svg height="10" width="10">
-        <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
-      </svg>
-    </div>
-  </div>
-
-
-<script src="js/customCursor.js"></script>
+  <!-- Quill Labs CMS Client Engine -->
+  <script src="./js/cms-client.js"></script>
+  <!-- Interactive Components JS -->
+  <script src="./js/components.js"></script>
 </body>
 </html>
