@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Quill Labs</title>
+  <meta name="description" content="Quill Labs is a business systems studio. Our mission, vision, values, philosophy, and frequently asked questions.">
+  
+  <!-- Favicon / Circular Logo -->
+  <link rel="icon" type="image/png" href="./circular logo.png">
+  <link rel="apple-touch-icon" href="./circular logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="./css/main.css">
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Supabase JS CDN (Optional Cloud Sync) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="section--dark">
+
+  <!-- Top Brand & Navigation Bar -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="v1home.html" aria-label="Quill Labs — home">
+        <span class="brand">
+          <img class="brand__mark" data-cms-src="brand_logo" src="./main quill.png" alt="Quill Logo" width="36" height="36">
+          <span class="brand__name"><span data-cms="brand_name">Quill Labs</span><span class="sys">.sys</span></span>
+        </span>
+      </a>
+
+      <!-- Top Glass Dock Navigation -->
+      <nav class="top-nav-dock" aria-label="Primary Navigation">
+        <a class="dock-item" href="v1home.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V10.5339C3 9.57062 3.46259 8.66591 4.24353 8.1019L10.2435 3.76856C11.2921 3.01128 12.7079 3.01128 13.7565 3.76856L19.7565 8.1019C20.5374 8.66591 21 9.57062 21 10.5339V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18Z"></path></svg>
+          <span>Home</span>
+        </a>
+        <a class="dock-item" href="v1 services.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          <span>Services</span>
+        </a>
+        <a class="dock-item" href="v1 ourprocess.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 9.39536 18.8605 7.3637 16C6.06474 14.1711 5 12.0475 5 10C5 6.134 8.134 3 12 3C15.866 3 19 6.134 19 10C19 12.0475 17.9353 14.1711 16.6363 16C14.6046 18.8605 12 21 12 21Z"></path></svg>
+          <span>Our Process</span>
+        </a>
+        <a class="dock-item" href="v1 abt.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
+          <span>About</span>
+        </a>
+        <a class="dock-item" href="v1 contact.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+          <span>Contact</span>
+        </a>
+      </nav>
+
+      <!-- Actions & Theme Toggle -->
+      <div class="header-actions">
+        <label class="theme-switch" aria-label="Toggle Theme">
+          <input type="checkbox" class="theme-switch__checkbox">
+          <div class="theme-switch__container">
+            <div class="theme-switch__clouds"></div>
+            <div class="theme-switch__stars-container">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <div class="theme-switch__circle-container">
+              <div class="theme-switch__sun-moon-container">
+                <div class="theme-switch__moon">
+                  <div class="theme-switch__spot"></div>
+                  <div class="theme-switch__spot"></div>
+                  <div class="theme-switch__spot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </label>
+
+        <a class="btn btn--primary" href="v1 contact.html">Book a strategy call</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Page Hero -->
+    <section class="section blueprint-grid" style="padding-bottom: 2rem;">
+      <div class="container">
+        <p class="mono-label reveal" style="margin-bottom: 1.5rem;"><a href="v1home.html" style="color: var(--cta-gold);">Home</a> / About</p>
+        <div class="section-head reveal">
+          <span class="eyebrow">The studio</span>
+          <h1>We build the systems that power modern online businesses.</h1>
+          <p class="lede">We don't build websites. We build business systems that connect attention to revenue.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="section">
+      <div class="container">
+        <div class="value-list">
+          <div class="value-cell reveal">
+            <span class="eyebrow">Mission</span>
+            <h2 style="margin-top: 1rem; font-size: var(--fs-h3)">Connect value to revenue.</h2>
+            <p>We help businesses replace scattered pages, platforms, and manual follow-up with one connected system — from the website that earns attention to the automation that closes the sale.</p>
+          </div>
+          <div class="value-cell reveal" data-delay="1">
+            <span class="eyebrow">Vision</span>
+            <h2 style="margin-top: 1rem; font-size: var(--fs-h3)">Systems over sites.</h2>
+            <p>A world where small and growing businesses run on the same kind of infrastructure big ones take for granted — and never depend on guesswork or hired tech experts to keep it working.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy Split -->
+    <section class="section section--tint">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Brand philosophy</span>
+          <h2>Not a design agency. A systems studio.</h2>
+        </div>
+        <div class="split">
+          <div class="reveal">
+            <span class="eyebrow">What we're not</span>
+            <ul class="list-check list-x" style="margin-top: 1.5rem;">
+              <li>We don't sell pages by the page.</li>
+              <li>We don't do "launch and leave".</li>
+              <li>We don't stack features you won't use.</li>
+              <li>We don't invent results to look good.</li>
+            </ul>
+          </div>
+          <div class="reveal" data-delay="1">
+            <span class="eyebrow">What we are</span>
+            <ul class="list-check" style="margin-top: 1.5rem;">
+              <li>We start with the gap, not the design.</li>
+              <li>We connect attention to revenue, end to end.</li>
+              <li>We hand you a system you can run, not a dependency.</li>
+              <li>We stay and optimize after launch.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Timeline -->
+    <section class="section section--dark">
+      <div class="container">
+        <div class="split">
+          <div class="section-head reveal">
+            <span class="eyebrow">Where we started</span>
+            <h2>Built from client work that didn't fit a template.</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <h3>The beginning</h3>
+              <p>Started as a studio taking on client work — websites, landing pages, anything that needed building.</p>
+            </div>
+            <div class="timeline-item reveal" data-delay="1">
+              <h3>The pattern</h3>
+              <p>Repeatedly, the real problem wasn't the website. It was the system around it — leads leaking, follow-up by hand, nothing connected.</p>
+            </div>
+            <div class="timeline-item reveal" data-delay="2">
+              <h3>The method</h3>
+              <p>So we became a different kind of studio: one that designs the system first, and builds websites only as the center of it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section section--tint">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Values</span>
+          <h2>What we hold ourselves to.</h2>
+        </div>
+        <div class="value-list">
+          <div class="value-cell reveal">
+            <h3>Problems before features</h3>
+            <p>We name the business problem first. Features only exist to solve it.</p>
+          </div>
+          <div class="value-cell reveal" data-delay="1">
+            <h3>Honest about what we build</h3>
+            <p>No fabricated results, no promises we can't keep. We say what a thing will and won't do.</p>
+          </div>
+          <div class="value-cell reveal" data-delay="2">
+            <h3>Responsible with resources</h3>
+            <p>Your budget is your money. We spend it where it produces the most revenue.</p>
+          </div>
+          <div class="value-cell reveal" data-delay="3">
+            <h3>Direct communication</h3>
+            <p>No layers of account managers. You talk to the people building your system.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Common questions, straight answers.</h2>
+        </div>
+        <div class="faq">
+          <details class="faq-item reveal" data-delay="0">
+            <summary>Are you a website agency?</summary>
+            <p>No. We're a business systems studio. A website is the foundation of the system — not the whole system. We design the infrastructure around it: journeys, automation, and digital products.</p>
+          </details>
+          <details class="faq-item reveal" data-delay="1">
+            <summary>How do we get started?</summary>
+            <p>With a free strategy call. We map your business, find the gap, and recommend a track and foundation. No pitch deck, no obligation.</p>
+          </details>
+          <details class="faq-item reveal" data-delay="2">
+            <summary>What if I only need a website right now?</summary>
+            <p>That's a perfectly good start. Pick a foundation at a transparent price. Layers and growth paths are there for when you're ready.</p>
+          </details>
+          <details class="faq-item reveal" data-delay="3">
+            <summary>How long does a project take?</summary>
+            <p>Foundations ship in 5 days to 4 weeks depending on the tier you choose. You'll know the timeline before we start.</p>
+          </details>
+          <details class="faq-item reveal" data-delay="3">
+            <summary>Do you work with businesses outside India?</summary>
+            <p>We work wherever you are. Pricing is listed in INR, and the strategy call is the same wherever you're calling from.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Band -->
+    <section class="cta-band">
+      <div class="blueprint-grid" style="position: absolute; inset: 0" aria-hidden="true"></div>
+      <div class="container" style="position: relative; padding-block: clamp(4.5rem, 9vw, 7rem)">
+        <div class="cta-band__inner reveal">
+          <span class="eyebrow">Next step</span>
+          <h2>Let's identify the biggest gap.</h2>
+          <p class="lede">We start every project with a strategy call — not a quote. Bring your current website, your customer journey, and the questions you keep answering by hand.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="v1 contact.html">Book a strategy call</a>
+            <a class="btn btn--ghost-light" href="v1 contact.html#form">Send an enquiry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <span class="brand">
+            <img class="brand__mark" src="./main quill.png" alt="Quill Labs" width="32" height="32">
+            <span class="brand__name">Quill Labs<span class="sys">.sys</span></span>
+          </span>
+          <p class="site-footer__tagline">Connect the Value. Capture the Sale.</p>
+          <p class="site-footer__statement">We don't build websites. We build business systems that connect attention to revenue.</p>
+          <a class="btn btn--primary" href="v1 contact.html">Book a strategy call</a>
+        </div>
+        <nav aria-label="Footer — studio">
+          <h3>Studio</h3>
+          <a href="v1home.html">Home</a>
+          <a href="v1 services.html">Services</a>
+          <a href="v1 ourprocess.html">Our Process</a>
+          <a href="v1 abt.html">About</a>
+          <a href="v1 contact.html">Contact</a>
+          <a href="admin.html" style="color: var(--cta-gold); font-weight: 600;">Admin / CMS ↗</a>
+        </nav>
+        <div>
+          <h3>Tracks</h3>
+          <a href="v1 services.html#business">Local Business Launch</a>
+          <a href="v1 services.html#creator">Creator Launch</a>
+          <a href="mailto:buildbyquill@gmail.com">buildbyquill@gmail.com</a>
+        </div>
+        <div class="site-footer__cta">
+          <h3>Get started</h3>
+          <p>A free strategy call. No pitch deck, no obligation.</p>
+          <a class="btn btn--ghost-light" href="v1 contact.html">Start here</a>
+          <p class="mono-label" style="margin-top: 0.5rem;">Response within one business day</p>
+        </div>
+      </div>
+      <div class="site-footer__bar">
+        <span>© 2026 Quill Labs — Business Systems Studio</span>
+        <span>quilllabs.systems</span>
+        <span>Built with the Quill Labs Method</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quill Labs CMS Client Engine -->
+  <script src="./js/cms-client.js"></script>
+  <!-- Interactive Components JS -->
+  <script src="./js/components.js"></script>
+</body>
+</html>

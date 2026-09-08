@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quill Labs — Studio Admin & CMS Dashboard</title>
+  <meta name="admin-password" content="{{ADMIN_PASSWORD}}">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="./circular logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet <!-- Quill Labs CMS Client Engine -->
+  <script src="./js/cms-client.js"></script>
+  <!-- GSAP CDN for smooth animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- Interactive Components JS -->
+  <script src="./js/components.js"></script>
+
+  <style>
+    /* Admin Specific Blueprint Dashboard Styling */
+    :root {
+      --admin-bg: #07080A;
+      --admin-panel: #0E1116;
+      --admin-panel-alt: #151921;
+      --admin-border: #222733;
+      --admin-border-focus: #3D4457;
+      --admin-text-main: #F4F1EA;
+      --admin-text-muted: #8E95A5;
+      --admin-accent: #D89032;
+      --admin-emerald: #10B981;
+      --admin-crimson: #EF4444;
+      --admin-blue: #3B82F6;
+    }
+
+    body.admin-body {
+      background-color: var(--admin-bg);
+      color: var(--admin-text-main);
+      font-family: var(--font-body);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Auth Gate Modal */
+    #auth-gate {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 8, 10, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .auth-card {
+      background: var(--admin-panel);
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .auth-card .brand__mark {
+      margin: 0 auto 1rem auto;
+      display: block;
+    }
+
+    /* Admin Top Header */
+    .admin-header {
+      background: var(--admin-panel);
+      border-bottom: 1px solid var(--admin-border);
+      padding: 0.85rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .admin-header__inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .admin-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--admin-emerald);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .admin-badge--cloud {
+      background: rgba(59, 130, 246, 0.12);
+      border-color: rgba(59, 130, 246, 0.3);
+      color: var(--admin-blue);
+    }
+
+    .admin-header__actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Tab Navigation */
+    .admin-tabs-bar {
+      background: #090B0F;
+      border-bottom: 1px solid var(--admin-border);
+      padding: 0 1.5rem;
+      position: sticky;
+      top: 61px;
+      z-index: 990;
+    }
+
+    .admin-tabs-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .admin-tabs-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .admin-tab {
+      padding: 1rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--admin-text-muted);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .admin-tab:hover {
+      color: var(--admin-text-main);
+    }
+
+    .admin-tab.is-active {
+      color: var(--cta-gold, var(--admin-accent));
+      border-bottom-color: var(--cta-gold, var(--admin-accent));
+      background: rgba(216, 144, 50, 0.04);
+    }
+
+    .admin-tab .badge-count {
+      background: var(--cta-gold, var(--admin-accent));
+      color: #000;
+      font-weight: 700;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+    }
+
+    /* Main Container */
+    .admin-main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      width: 100%;
+      box-sizing: border-box;
+      flex: 1;
+    }
+
+    .admin-panel-card {
+      background: var(--admin-panel);
+      border: 1px solid var(--admin-border);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .admin-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--admin-border);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .admin-card-header h2 {
+      font-size: 1.35rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+    }
+
+    .admin-card-header p {
+      margin: 0.25rem 0 0 0;
+      font-size: 0.85rem;
+      color: var(--admin-text-muted);
+    }
+
+    /* Form Controls */
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--admin-text-muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      background: #07080A;
+      border: 1px solid var(--admin-border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      color: var(--admin-text-main);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      box-sizing: border-box;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--cta-gold, var(--admin-accent));
+      box-shadow: 0 0 0 3px rgba(216, 144, 50, 0.15);
+    }
+
+    .form-textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Color Preset Chips */
+    .color-chip-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .color-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.85rem;
+      border: 1px solid var(--admin-border);
+      border-radius: 6px;
+      background: #07080A;
+      color: var(--admin-text-main);
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .color-chip:hover {
+      border-color: var(--admin-text-muted);
+    }
+
+    .color-chip.is-active {
+      border-color: var(--cta-gold, var(--admin-accent));
+      box-shadow: 0 0 0 2px rgba(216, 144, 50, 0.2);
+    }
+
+    .color-chip-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Buttons */
+    .btn-admin {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-admin--primary {
+      background: var(--cta-gold, var(--admin-accent));
+      color: #000;
+    }
+
+    .btn-admin--primary:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    .btn-admin--secondary {
+      background: var(--admin-panel-alt);
+      color: var(--admin-text-main);
+      border: 1px solid var(--admin-border);
+    }
+
+    .btn-admin--secondary:hover {
+      background: #1C212B;
+      border-color: var(--admin-border-focus);
+    }
+
+    .btn-admin--danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--admin-crimson);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .btn-admin--danger:hover {
+      background: rgba(239, 68, 68, 0.25);
+    }
+
+    .btn-admin--sm {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+    }
+
+    /* Data Cards Grid for Work & Products */
+    .data-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .item-card {
+      background: #080A0D;
+      border: 1px solid var(--admin-border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .item-card:hover {
+      border-color: var(--admin-border-focus);
+      transform: translateY(-2px);
+    }
+
+    .item-card__thumb {
+      height: 180px;
+      background: #12151B;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .item-card__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .item-card__badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 0.7rem;
+    }
+
+    .item-card__body {
+      padding: 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item-card__meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .item-card__actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--admin-border);
+    }
+
+    /* Leads Table */
+    .leads-table-container {
+      overflow-x: auto;
+      border: 1px solid var(--admin-border);
+      border-radius: 8px;
+      background: #080A0D;
+    }
+
+    .leads-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    .leads-table th {
+      background: #0E1116;
+      padding: 0.9rem 1.2rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--admin-text-muted);
+      border-bottom: 1px solid var(--admin-border);
+    }
+
+    .leads-table td {
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid var(--admin-border);
+      vertical-align: top;
+    }
+
+    .leads-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Modal Styling */
+    .admin-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(6px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+
+    .admin-modal__content {
+      background: var(--admin-panel);
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 650px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Toast Notification */
+    .admin-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #0E1116;
+      border: 1px solid var(--cta-gold, var(--admin-accent));
+      color: var(--admin-text-main);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="admin-body">
+  <script>
+    // Authentication gate logic
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';')[0];
+    }
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('passcode-input').value;
+      const correct = document.querySelector('meta[name="admin-password"]').content;
+      if (input === correct) {
+        document.cookie = 'admin_auth=1; path=/; max-age=86400';
+        document.getElementById('auth-gate').style.display = 'none';
+        document.getElementById('auth-error').style.display = 'none';
+      } else {
+        document.getElementById('auth-error').style.display = 'block';
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      if (getCookie('admin_auth')) {
+        document.getElementById('auth-gate').style.display = 'none';
+      } else {
+        document.getElementById('auth-gate').style.display = 'flex';
+      }
+    });
+  </script>
+
+  <!-- 1. Passcode Authentication Gate -->
+  <div id="auth-gate" style="display: none;">
+    <div class="auth-card">
+      <img class="brand__mark" src="./main quill.png" alt="Quill Logo" width="48" height="48">
+      <h2 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.25rem;">Quill Labs CMS</h2>
+      <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--admin-text-muted); margin-bottom: 1.75rem;">
+        Secure Business Systems Dashboard
+      </p>
+
+      <form id="auth-form" onsubmit="handleAuthSubmit(event)">
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label" for="passcode-input">Admin Passphrase / PIN</label>
+          <input type="password" id="passcode-input" class="form-input" placeholder="Enter PIN (Default: quill2026)" required autofocus>
+        </div>
+        <button type="submit" class="btn-admin btn-admin--primary" style="width: 100%;">
+          Unlock Dashboard →
+        </button>
+        <p id="auth-error" style="color: var(--admin-crimson); font-size: 0.8rem; font-family: var(--font-mono); margin-top: 1rem; display: none;">
+          Incorrect passphrase. Please try again.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Admin Header -->
+  <header class="admin-header">
+    <div class="admin-header__inner">
+      <a class="admin-brand" href="admin.html">
+        <img src="./main quill.png" alt="Quill Logo" width="32" height="32" id="header-logo-preview">
+        <div>
+          <span style="font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em;">
+            <span id="header-brand-name">Quill Labs</span><span style="color: var(--cta-gold, var(--admin-accent)); font-family: var(--font-mono); font-size: 0.85rem;">.sys/admin</span>
+          </span>
+        </div>
+      </a>
+
+      <div class="admin-header__actions">
+        <span class="admin-badge" id="storage-status-badge">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: currentColor;"></span>
+          <span id="storage-status-text">Local Storage Engine</span>
+        </span>
+
+        <a class="btn-admin btn-admin--secondary btn-admin--sm" href="v1home.html" target="_blank">
+          View Live Website ↗
+        </a>
+
+        <button class="btn-admin btn-admin--danger btn-admin--sm" onclick="handleLogout()">
+          Lock
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Tab Navigation Bar -->
+  <nav class="admin-tabs-bar">
+    <div class="admin-tabs-inner">
+      <button class="admin-tab is-active" data-tab="branding" onclick="switchTab('branding')">
+        🎨 Business Branding
+      </button>
+      <button class="admin-tab" data-tab="copy" onclick="switchTab('copy')">
+        ✍️ Website Copy
+      </button>
+      <button class="admin-tab" data-tab="work" onclick="switchTab('work')">
+        💼 Work Cards <span class="badge-count" id="work-count-badge">0</span>
+      </button>
+      <button class="admin-tab" data-tab="products" onclick="switchTab('products')">
+        📦 Products & Pricing <span class="badge-count" id="products-count-badge">0</span>
+      </button>
+      <button class="admin-tab" data-tab="leads" onclick="switchTab('leads')">
+        📬 Leads Inbox <span class="badge-count" id="leads-count-badge">0</span>
+      </button>
+      <button class="admin-tab" data-tab="settings" onclick="switchTab('settings')">
+        ⚙️ Database & Cloud Sync
+      </button>
+    </div>
+  </nav>
+
+  <!-- 4. Main Dashboard Workspace -->
+  <main class="admin-main">
+
+    <!-- ================================================================= -->
+    <!-- TAB 1: BRANDING & VISUALS -->
+    <!-- ================================================================= -->
+    <section id="tab-branding" class="tab-pane">
+      <div class="admin-panel-card">
+        <div class="admin-card-header">
+          <div>
+            <h2>🎨 Business Branding & Accent Colors</h2>
+            <p>Customize your agency identity, logo URLs, and primary brand color across the whole site.</p>
+          </div>
+          <button class="btn-admin btn-admin--primary" onclick="saveBranding()">
+            Save Branding Live ✓
+          </button>
+        </div>
+
+        <div class="form-grid-2">
+          <div>
+            <div class="form-group">
+              <label class="form-label" for="brand-name-input">Studio / Business Name</label>
+              <input type="text" id="brand-name-input" class="form-input" placeholder="e.g. Quill Labs">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="brand-tagline-input">Studio Tagline</label>
+              <input type="text" id="brand-tagline-input" class="form-input" placeholder="e.g. Business Systems Studio">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="brand-logo-input">Brand Logo URL</label>
+              <input type="text" id="brand-logo-input" class="form-input" placeholder="./main quill.png or https://..." oninput="updateLogoPreview(this.value)">
+              <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                <button type="button" class="btn-admin btn-admin--secondary btn-admin--sm" onclick="setLogoPreset('./main quill.png')">Default Quill</button>
+                <button type="button" class="btn-admin btn-admin--secondary btn-admin--sm" onclick="setLogoPreset('./circular logo.png')">Circular Mark</button>
+                <button type="button" class="btn-admin btn-admin--secondary btn-admin--sm" onclick="setLogoPreset('./DARK LOGO.png')">Dark Logo</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="brand-wordmark-input">Wordmark Image URL</label>
+              <input type="text" id="brand-wordmark-input" class="form-input" placeholder="./wordmark.png or https://...">
+            </div>
+          </div>
+
+          <div>
+            <div class="form-group">
+              <label class="form-label">
+                Primary Brand Accent Color: <strong id="accent-hex-label" style="color: var(--cta-gold, var(--admin-accent));">#D89032</strong>
+              </label>
+
+              <!-- Color Preset Buttons -->
+              <div class="color-chip-row">
+                <button type="button" class="color-chip" onclick="setAccentColor('#D89032')">
+                  <span class="color-chip-dot" style="background: #D89032;"></span> Quill Gold
+                </button>
+                <button type="button" class="color-chip" onclick="setAccentColor('#4F8CFF')">
+                  <span class="color-chip-dot" style="background: #4F8CFF;"></span> Electric Blue
+                </button>
+                <button type="button" class="color-chip" onclick="setAccentColor('#10B981')">
+                  <span class="color-chip-dot" style="background: #10B981;"></span> Emerald
+                </button>
+                <button type="button" class="color-chip" onclick="setAccentColor('#7C3AED')">
+                  <span class="color-chip-dot" style="background: #7C3AED;"></span> Violet
+                </button>
+                <button type="button" class="color-chip" onclick="setAccentColor('#E11D48')">
+                  <span class="color-chip-dot" style="background: #E11D48;"></span> Crimson
+                </button>
+                <button type="button" class="color-chip" onclick="setAccentColor('#D4AF83')">
+                  <span class="color-chip-dot" style="background: #D4AF83;"></span> Sand Linen
+                </button>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem;">
+                <input type="color" id="brand-color-picker" style="width: 44px; height: 38px; border: 1px solid var(--admin-border); border-radius: 6px; cursor: pointer; background: transparent;" oninput="setAccentColor(this.value)">
+                <input type="text" id="brand-color-input" class="form-input" style="max-width: 140px; font-family: var(--font-mono);" placeholder="#D89032" oninput="setAccentColor(this.value)">
+                <span style="font-size: 0.8rem; color: var(--admin-text-muted);">Custom Hex</span>
+              </div>
+            </div>
+
+            <!-- Live Element Preview -->
+            <div style="background: #080A0D; border: 1px solid var(--admin-border); border-radius: 8px; padding: 1.25rem; margin-top: 1.5rem;">
+              <span class="form-label">Live Style Preview</span>
+              <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;">
+                <button type="button" class="btn btn--primary" style="pointer-events: none;">Call to Action</button>
+                <span class="tag tag--business" style="pointer-events: none;">Local Business</span>
+                <span class="mono-label" style="color: var(--cta-gold, var(--admin-accent));">→ Attention to Revenue</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 2: WEBSITE COPY -->
+    <!-- ================================================================= -->
+    <section id="tab-copy" class="tab-pane" style="display: none;">
+      <div class="admin-panel-card">
+        <div class="admin-card-header">
+          <div>
+            <h2>✍️ Website Copy & Section Headlines</h2>
+            <p>Directly control hero headlines, subtext, call to action labels, and pull quotes.</p>
+          </div>
+          <button class="btn-admin btn-admin--primary" onclick="saveCopy()">
+            Save Copy Live ✓
+          </button>
+        </div>
+
+        <div class="form-grid-2">
+          <div>
+            <h3 style="font-size: 1rem; color: var(--cta-gold, var(--admin-accent)); margin-bottom: 1rem; font-family: var(--font-mono);">
+              Hero Section
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label" for="hero-kicker-input">Hero Eyebrow / Kicker</label>
+              <input type="text" id="hero-kicker-input" class="form-input" placeholder="e.g. A Business Systems Studio">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="hero-title-input">Main Hero Headline</label>
+              <textarea id="hero-title-input" class="form-textarea" rows="3" placeholder="Headline text..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="hero-sub-input">Hero Sub-kicker</label>
+              <input type="text" id="hero-sub-input" class="form-input" placeholder="e.g. Connect the Value. Capture the Sale.">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="hero-note-input">Hero Subtitle / Description Note</label>
+              <textarea id="hero-note-input" class="form-textarea" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-size: 1rem; color: var(--cta-gold, var(--admin-accent)); margin-bottom: 1rem; font-family: var(--font-mono);">
+              Buttons & Pull Quotes
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label" for="primary-cta-input">Primary CTA Button Label</label>
+              <input type="text" id="primary-cta-input" class="form-input" placeholder="e.g. Book a strategy call">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="secondary-cta-input">Secondary CTA Button Label</label>
+              <input type="text" id="secondary-cta-input" class="form-input" placeholder="e.g. Explore the services">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pull-quote-title-input">Pull Quote Headline</label>
+              <input type="text" id="pull-quote-title-input" class="form-input" placeholder="e.g. A website that only looks good isn't a system.">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pull-quote-sub-input">Pull Quote Subtext</label>
+              <textarea id="pull-quote-sub-input" class="form-textarea" rows="2"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-email-input">Studio Contact Email</label>
+              <input type="email" id="contact-email-input" class="form-input" placeholder="e.g. buildbyquill@gmail.com">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 3: WORK CARDS MANAGER -->
+    <!-- ================================================================= -->
+    <section id="tab-work" class="tab-pane" style="display: none;">
+      <div class="admin-panel-card">
+        <div class="admin-card-header">
+          <div>
+            <h2>💼 Work Cards & Portfolio Case Studies</h2>
+            <p>Manage project builds, concept work, client testimonials, and outcomes shown on the homepage and process page.</p>
+          </div>
+          <button class="btn-admin btn-admin--primary" onclick="openWorkModal()">
+            + Add New Work Card
+          </button>
+        </div>
+
+        <!-- Filter Controls -->
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+          <button class="btn-admin btn-admin--secondary btn-admin--sm is-active" id="filter-work-all" onclick="filterWorkCards('all')">All (<span id="work-total-count">0</span>)</button>
+          <button class="btn-admin btn-admin--secondary btn-admin--sm" id="filter-work-business" onclick="filterWorkCards('business')">Local Business Launch</button>
+          <button class="btn-admin btn-admin--secondary btn-admin--sm" id="filter-work-creator" onclick="filterWorkCards('creator')">Creator Launch</button>
+        </div>
+
+        <!-- Work Cards Grid -->
+        <div id="admin-work-grid" class="data-cards-grid">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 4: PRODUCTS & PRICING -->
+    <!-- ================================================================= -->
+    <section id="tab-products" class="tab-pane" style="display: none;">
+      <div class="admin-panel-card">
+        <div class="admin-card-header">
+          <div>
+            <h2>📦 Products & Pricing Foundations</h2>
+            <p>Add, edit, or reprice your service foundations (e.g. Motion Website, Editorial Website) shown on Services and Homepage.</p>
+          </div>
+          <button class="btn-admin btn-admin--primary" onclick="openProductModal()">
+            + Add New Product
+          </button>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="admin-products-grid" class="data-cards-grid">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 5: LEADS INBOX -->
+    <!-- ================================================================= -->
+    <section id="tab-leads" class="tab-pane" style="display: none;">
+      <div class="admin-panel-card">
+        <div class="admin-card-header">
+          <div>
+            <h2>📬 Customer Inquiries & Leads Inbox</h2>
+            <p>All project enquiries submitted through the contact page form appear here in real time.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn-admin btn-admin--secondary" onclick="exportLeads()">
+              Download CSV ⬇
+            </button>
+          </div>
+        </div>
+
+        <!-- Leads Search Filter -->
+        <div style="margin-bottom: 1.25rem;">
+          <input type="text" id="lead-search-input" class="form-input" placeholder="Search leads by name, email, or message..." oninput="renderLeadsTable(this.value)">
+        </div>
+
+        <div class="leads-table-container">
+          <table class="leads-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Client Name & Email</th>
+                <th>Track / Budget</th>
+                <th>Gap / Project Details</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="leads-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 6: DATABASE & CLOUD SYNC -->
+    <!-- ================================================================= -->
+    <section id="tab-settings" class="tab-pane" style="display: none;">
+      <div class="admin-panel-card">
+        <div class="admin-card-header">
+          <div>
+            <h2>⚙️ Database & Cloud Sync (Supabase)</h2>
+            <p>Connect your Supabase project for instant cloud persistence, or manage offline local backups.</p>
+          </div>
+          <button class="btn-admin btn-admin--primary" onclick="saveSupabaseConfig()">
+            Save Database Settings ✓
+          </button>
+        </div>
+
+        <div class="form-grid-2">
+          <div>
+            <div class="form-group">
+              <label class="form-label" for="supabase-url-input">Supabase Project URL</label>
+              <input type="url" id="supabase-url-input" class="form-input" placeholder="https://xyzcompany.supabase.co">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="supabase-key-input">Supabase Anon Public API Key</label>
+              <input type="password" id="supabase-key-input" class="form-input" placeholder="eyJhGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...">
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+              <button type="button" class="btn-admin btn-admin--secondary" onclick="testDatabaseConnection()">
+                Test Live Connection ⚡
+              </button>
+            </div>
+            <div id="db-test-result" style="margin-top: 0.75rem; font-family: var(--font-mono); font-size: 0.8rem;"></div>
+          </div>
+
+          <div>
+            <h3 style="font-size: 1rem; color: var(--cta-gold, var(--admin-accent)); margin-bottom: 0.75rem; font-family: var(--font-mono);">
+              Backup & Recovery
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--admin-text-muted); margin-bottom: 1.25rem;">
+              Export all website content, products, work cards, and leads as a clean JSON backup file.
+            </p>
+
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button type="button" class="btn-admin btn-admin--secondary" onclick="exportJSONBackup()">
+                Export JSON Backup ⬇
+              </button>
+              <label class="btn-admin btn-admin--secondary" style="cursor: pointer;">
+                Restore from JSON ⬆
+                <input type="file" id="import-json-file" accept=".json" style="display: none;" onchange="importJSONBackup(event)">
+              </label>
+              <button type="button" class="btn-admin btn-admin--danger" onclick="resetDefaults()">
+                Reset to Factory Defaults
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================= -->
+  <!-- MODAL: ADD / EDIT WORK CARD -->
+  <!-- ================================================================= -->
+  <div id="work-modal" class="admin-modal" style="display: none;">
+    <div class="admin-modal__content">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+        <h3 id="work-modal-title" style="font-family: var(--font-display); font-size: 1.25rem; margin: 0;">Add Work Card</h3>
+        <button class="btn-admin btn-admin--secondary btn-admin--sm" onclick="closeWorkModal()">✕</button>
+      </div>
+
+      <form id="work-card-form" onsubmit="handleSaveWorkCard(event)">
+        <input type="hidden" id="work-id-input">
+
+        <div class="form-group">
+          <label class="form-label" for="work-title-input">Project Title</label>
+          <input type="text" id="work-title-input" class="form-input" placeholder="e.g. Destiny Laboratories" required>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="work-track-select">Track Category</label>
+            <select id="work-track-select" class="form-select">
+              <option value="business">Local Business Launch</option>
+              <option value="creator">Creator Launch</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="work-badge-select">Badge Type</label>
+            <select id="work-badge-select" class="form-select">
+              <option value="Client project">Client project</option>
+              <option value="Concept work">Concept work</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="work-system-input">System Type Subtitle</label>
+          <input type="text" id="work-system-input" class="form-input" placeholder="e.g. Motion Website + WhatsApp" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="work-image-input">Thumbnail Image URL</label>
+          <input type="text" id="work-image-input" class="form-input" placeholder="./v1home_files/398-960x600.jpg or https://..." required oninput="document.getElementById('modal-work-preview').src = this.value">
+          <div style="margin-top: 0.5rem; height: 120px; border: 1px solid var(--admin-border); border-radius: 6px; overflow: hidden; background: #000;">
+            <img id="modal-work-preview" src="./v1home_files/398-960x600.jpg" alt="Preview" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="work-problem-input">Problem Statement</label>
+          <textarea id="work-problem-input" class="form-textarea" rows="2" placeholder="The customer friction point..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="work-outcome-input">Outcome / Result (Highlighted)</label>
+          <input type="text" id="work-outcome-input" class="form-input" placeholder="e.g. Qualified bookings without manual chasing.">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="work-review-input">Client Review Quote (Optional)</label>
+          <textarea id="work-review-input" class="form-textarea" rows="2" placeholder="e.g. Really happy with the website developed by QUILL LABS."></textarea>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="work-clientname-input">Client Name & Title (Optional)</label>
+            <input type="text" id="work-clientname-input" class="form-input" placeholder="e.g. Amit Rajan, Owner">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="work-link-input">Target Link URL</label>
+            <input type="text" id="work-link-input" class="form-input" placeholder="v1 contact.html or https://...">
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn-admin btn-admin--secondary" onclick="closeWorkModal()">Cancel</button>
+          <button type="submit" class="btn-admin btn-admin--primary">Save Work Card ✓</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL: ADD / EDIT PRODUCT -->
+  <!-- ================================================================= -->
+  <div id="product-modal" class="admin-modal" style="display: none;">
+    <div class="admin-modal__content">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+        <h3 id="product-modal-title" style="font-family: var(--font-display); font-size: 1.25rem; margin: 0;">Add Product</h3>
+        <button class="btn-admin btn-admin--secondary btn-admin--sm" onclick="closeProductModal()">✕</button>
+      </div>
+
+      <form id="product-form" onsubmit="handleSaveProduct(event)">
+        <input type="hidden" id="product-id-input">
+
+        <div class="form-group">
+          <label class="form-label" for="product-title-input">Product / Foundation Name</label>
+          <input type="text" id="product-title-input" class="form-input" placeholder="e.g. Motion Website" required>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="product-price-input">Price</label>
+            <input type="text" id="product-price-input" class="form-input" placeholder="e.g. ₹5,999" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="product-prefix-input">Price Prefix</label>
+            <input type="text" id="product-prefix-input" class="form-input" placeholder="e.g. Starting from">
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="product-timeline-input">Delivery Timeline</label>
+            <input type="text" id="product-timeline-input" class="form-input" placeholder="e.g. 7–10 Days">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="product-bestfor-input">Best For</label>
+            <input type="text" id="product-bestfor-input" class="form-input" placeholder="e.g. Modern businesses · Agencies">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="product-desc-input">Description / Outcome</label>
+          <textarea id="product-desc-input" class="form-textarea" rows="3" placeholder="Brief value proposition..." required></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn-admin btn-admin--secondary" onclick="closeProductModal()">Cancel</button>
+          <button type="submit" class="btn-admin btn-admin--primary">Save Product ✓</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="admin-toast" class="admin-toast" style="display: none;"></div>
+
+  <!-- Admin Controller JavaScript -->
+  <script>
+    const AUTH_PASSCODE = 'quill2026';
+    let currentWorkFilter = 'all';
+
+    // --- 1. AUTHENTICATION CONTROLLER ---
+    function checkAuth() {
+      const isAuthed = sessionStorage.getItem('quill_admin_auth') === 'true';
+      const gate = document.getElementById('auth-gate');
+      if (!isAuthed) {
+        gate.style.display = 'flex';
+      } else {
+        gate.style.display = 'none';
+        loadAllDashboardData();
+      }
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const val = document.getElementById('passcode-input').value.trim();
+      const errEl = document.getElementById('auth-error');
+      if (val === AUTH_PASSCODE) {
+        sessionStorage.setItem('quill_admin_auth', 'true');
+        document.getElementById('auth-gate').style.display = 'none';
+        errEl.style.display = 'none';
+        loadAllDashboardData();
+        showToast('✓ Welcome back to Quill Labs Studio CMS');
+      } else {
+        errEl.style.display = 'block';
+      }
+    }
+
+    function handleLogout() {
+      sessionStorage.removeItem('quill_admin_auth');
+      window.location.reload();
+    }
+
+    // --- 2. TAB SWITCHER ---
+    function switchTab(tabId) {
+      document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('is-active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+
+      const activeBtn = document.querySelector(`.admin-tab[data-tab="${tabId}"]`);
+      if (activeBtn) activeBtn.classList.add('is-active');
+
+      const pane = document.getElementById(`tab-${tabId}`);
+      if (pane) pane.style.display = 'block';
+    }
+
+    // --- 3. TOAST NOTIFICATIONS ---
+    function showToast(message) {
+      const toast = document.getElementById('admin-toast');
+      toast.innerHTML = message;
+      toast.style.display = 'flex';
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3500);
+    }
+
+    // --- 4. LOAD DASHBOARD DATA ---
+    function loadAllDashboardData() {
+      if (!window.quillCMS) return;
+
+      const content = quillCMS.getContent();
+      const products = quillCMS.getProducts();
+      const workCards = quillCMS.getWorkCards();
+      const leads = quillCMS.getLeads();
+      const config = quillCMS.getSupabaseConfig();
+
+      // Branding tab values
+      document.getElementById('brand-name-input').value = content.brand_name || 'Quill Labs';
+      document.getElementById('brand-tagline-input').value = content.brand_tagline || '';
+      document.getElementById('brand-logo-input').value = content.brand_logo || './main quill.png';
+      document.getElementById('brand-wordmark-input').value = content.brand_wordmark || './wordmark.png';
+      setAccentColor(content.brand_color || '#D89032', false);
+      updateLogoPreview(content.brand_logo);
+
+      // Copy tab values
+      document.getElementById('hero-kicker-input').value = content.hero_kicker || '';
+      document.getElementById('hero-title-input').value = content.hero_title || '';
+      document.getElementById('hero-sub-input').value = content.hero_sub || '';
+      document.getElementById('hero-note-input').value = content.hero_note || '';
+      document.getElementById('primary-cta-input').value = content.primary_cta_text || 'Book a strategy call';
+      document.getElementById('secondary-cta-input').value = content.secondary_cta_text || 'Explore the services';
+      document.getElementById('pull-quote-title-input').value = content.pull_quote_headline || '';
+      document.getElementById('pull-quote-sub-input').value = content.pull_quote_sub || '';
+      document.getElementById('contact-email-input').value = content.contact_email || 'buildbyquill@gmail.com';
+
+      // Supabase config
+      document.getElementById('supabase-url-input').value = config.url || '';
+      document.getElementById('supabase-key-input').value = config.anonKey || '';
+
+      if (config.url && config.anonKey) {
+        document.getElementById('storage-status-badge').className = 'admin-badge admin-badge--cloud';
+        document.getElementById('storage-status-text').textContent = 'Supabase Cloud Sync';
+      }
+
+      // Render Work Cards, Products, Leads
+      renderWorkCardsGrid();
+      renderProductsGrid();
+      renderLeadsTable();
+
+      // Update counters
+      document.getElementById('work-count-badge').textContent = workCards.length;
+      document.getElementById('work-total-count').textContent = workCards.length;
+      document.getElementById('products-count-badge').textContent = products.length;
+      document.getElementById('leads-count-badge').textContent = leads.length;
+    }
+
+    // --- 5. BRANDING ACTIONS ---
+    function setAccentColor(hex, triggerSave = false) {
+      document.getElementById('brand-color-picker').value = hex;
+      document.getElementById('brand-color-input').value = hex;
+      document.getElementById('accent-hex-label').textContent = hex;
+      document.getElementById('accent-hex-label').style.color = hex;
+      document.documentElement.style.setProperty('--cta-gold', hex);
+
+      document.querySelectorAll('.color-chip').forEach(chip => {
+        chip.classList.toggle('is-active', chip.textContent.includes(hex) || chip.getAttribute('onclick').includes(hex));
+      });
+
+      if (triggerSave) {
+        saveBranding();
+      }
+    }
+
+    function updateLogoPreview(src) {
+      if (!src) src = './main quill.png';
+      const p = document.getElementById('header-logo-preview');
+      if (p) p.src = src;
+    }
+
+    function setLogoPreset(url) {
+      document.getElementById('brand-logo-input').value = url;
+      updateLogoPreview(url);
+    }
+
+    async function saveBranding() {
+      const items = {
+        brand_name: document.getElementById('brand-name-input').value.trim(),
+        brand_tagline: document.getElementById('brand-tagline-input').value.trim(),
+        brand_logo: document.getElementById('brand-logo-input').value.trim(),
+        brand_wordmark: document.getElementById('brand-wordmark-input').value.trim(),
+        brand_color: document.getElementById('brand-color-input').value.trim() || '#D89032',
+      };
+
+      await quillCMS.saveBatchContent(items);
+      document.getElementById('header-brand-name').textContent = items.brand_name;
+      showToast('✓ Branding and accent colors saved live to website!');
+    }
+
+    // --- 6. COPY ACTIONS ---
+    async function saveCopy() {
+      const items = {
+        hero_kicker: document.getElementById('hero-kicker-input').value.trim(),
+        hero_title: document.getElementById('hero-title-input').value.trim(),
+        hero_sub: document.getElementById('hero-sub-input').value.trim(),
+        hero_note: document.getElementById('hero-note-input').value.trim(),
+        primary_cta_text: document.getElementById('primary-cta-input').value.trim(),
+        secondary_cta_text: document.getElementById('secondary-cta-input').value.trim(),
+        pull_quote_headline: document.getElementById('pull-quote-title-input').value.trim(),
+        pull_quote_sub: document.getElementById('pull-quote-sub-input').value.trim(),
+        contact_email: document.getElementById('contact-email-input').value.trim(),
+      };
+
+      await quillCMS.saveBatchContent(items);
+      showToast('✓ Website copy updated and live!');
+    }
+
+    // --- 7. WORK CARDS CONTROLLER ---
+    function filterWorkCards(track) {
+      currentWorkFilter = track;
+      document.querySelectorAll('#filter-work-all, #filter-work-business, #filter-work-creator').forEach(b => b.classList.remove('is-active'));
+      const btn = document.getElementById(`filter-work-${track}`);
+      if (btn) btn.classList.add('is-active');
+      renderWorkCardsGrid();
+    }
+
+    function renderWorkCardsGrid() {
+      const grid = document.getElementById('admin-work-grid');
+      let cards = quillCMS.getWorkCards();
+
+      if (currentWorkFilter !== 'all') {
+        cards = cards.filter(c => c.track === currentWorkFilter);
+      }
+
+      if (!cards.length) {
+        grid.innerHTML = `<div style="grid-column: 1 / -1; padding: 2.5rem; text-align: center; color: var(--admin-text-muted); font-family: var(--font-mono);">No work cards found in this filter. Click "+ Add New Work Card" above.</div>`;
+        return;
+      }
+
+      grid.innerHTML = cards.map((card, idx) => `
+        <div class="item-card">
+          <div class="item-card__thumb">
+            <img src="${escapeHTML(card.image_url)}" alt="${escapeHTML(card.title)}" onerror="this.src='./v1home_files/398-960x600.jpg'">
+            <span class="tag ${card.badge === 'Client project' ? 'tag--business' : 'tag--concept'} item-card__badge">
+              ${escapeHTML(card.badge || 'Concept work')}
+            </span>
+          </div>
+          <div class="item-card__body">
+            <div class="item-card__meta">
+              <span class="tag ${card.track === 'creator' ? 'tag--creator' : 'tag--business'}">
+                ${card.track === 'creator' ? 'Creator Launch' : 'Local Business'}
+              </span>
+              <span class="mono-label" style="font-size: 0.72rem;">#${idx + 1}</span>
+            </div>
+            <h3 style="font-size: 1.1rem; margin: 0 0 0.4rem 0;">${escapeHTML(card.title)}</h3>
+            <p class="mono-label" style="color: var(--cta-gold, var(--admin-accent)); margin-bottom: 0.5rem;">${escapeHTML(card.system_type)}</p>
+            <p style="font-size: 0.85rem; color: var(--admin-text-muted); margin: 0; line-height: 1.4;">
+              ${escapeHTML(card.problem || '')}
+            </p>
+            ${card.outcome ? `<p style="font-size: 0.82rem; margin-top: 0.5rem; color: var(--admin-text-main);"><strong>Outcome:</strong> ${escapeHTML(card.outcome)}</p>` : ''}
+            ${card.client_review ? `<p style="font-size: 0.8rem; font-style: italic; color: #10B981; margin-top: 0.35rem;">“${escapeHTML(card.client_review)}”</p>` : ''}
+            
+            <div class="item-card__actions">
+              <button class="btn-admin btn-admin--secondary btn-admin--sm" onclick="editWorkCard('${card.id}')">Edit</button>
+              <button class="btn-admin btn-admin--danger btn-admin--sm" onclick="deleteWorkCard('${card.id}')">Delete</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openWorkModal(card = null) {
+      document.getElementById('work-card-form').reset();
+      if (card) {
+        document.getElementById('work-modal-title').textContent = 'Edit Work Card';
+        document.getElementById('work-id-input').value = card.id;
+        document.getElementById('work-title-input').value = card.title;
+        document.getElementById('work-track-select').value = card.track || 'business';
+        document.getElementById('work-badge-select').value = card.badge || 'Concept work';
+        document.getElementById('work-system-input').value = card.system_type || '';
+        document.getElementById('work-image-input').value = card.image_url || '';
+        document.getElementById('work-problem-input').value = card.problem || '';
+        document.getElementById('work-outcome-input').value = card.outcome || '';
+        document.getElementById('work-review-input').value = card.client_review || '';
+        document.getElementById('work-clientname-input').value = card.client_name || '';
+        document.getElementById('work-link-input').value = card.link_url || 'v1 contact.html';
+        document.getElementById('modal-work-preview').src = card.image_url || './v1home_files/398-960x600.jpg';
+      } else {
+        document.getElementById('work-modal-title').textContent = 'Add Work Card';
+        document.getElementById('work-id-input').value = '';
+        document.getElementById('work-image-input').value = './v1home_files/398-960x600.jpg';
+        document.getElementById('modal-work-preview').src = './v1home_files/398-960x600.jpg';
+      }
+      document.getElementById('work-modal').style.display = 'flex';
+    }
+
+    function closeWorkModal() {
+      document.getElementById('work-modal').style.display = 'none';
+    }
+
+    function editWorkCard(id) {
+      const card = quillCMS.getWorkCards().find(c => c.id === id);
+      if (card) openWorkModal(card);
+    }
+
+    async function deleteWorkCard(id) {
+      if (!confirm('Are you sure you want to delete this work card?')) return;
+      await quillCMS.deleteWorkCard(id);
+      loadAllDashboardData();
+      showToast('✓ Work card deleted');
+    }
+
+    async function handleSaveWorkCard(e) {
+      e.preventDefault();
+      const card = {
+        id: document.getElementById('work-id-input').value || undefined,
+        title: document.getElementById('work-title-input').value.trim(),
+        track: document.getElementById('work-track-select').value,
+        badge: document.getElementById('work-badge-select').value,
+        system_type: document.getElementById('work-system-input').value.trim(),
+        image_url: document.getElementById('work-image-input').value.trim(),
+        problem: document.getElementById('work-problem-input').value.trim(),
+        outcome: document.getElementById('work-outcome-input').value.trim(),
+        client_review: document.getElementById('work-review-input').value.trim(),
+        client_name: document.getElementById('work-clientname-input').value.trim(),
+        link_url: document.getElementById('work-link-input').value.trim() || 'v1 contact.html',
+      };
+
+      await quillCMS.saveWorkCard(card);
+      closeWorkModal();
+      loadAllDashboardData();
+      showToast('✓ Work card saved live to website!');
+    }
+
+    // --- 8. PRODUCTS CONTROLLER ---
+    function renderProductsGrid() {
+      const grid = document.getElementById('admin-products-grid');
+      const products = quillCMS.getProducts();
+
+      if (!products.length) {
+        grid.innerHTML = `<div style="grid-column: 1 / -1; padding: 2.5rem; text-align: center; color: var(--admin-text-muted); font-family: var(--font-mono);">No products configured. Click "+ Add New Product" above.</div>`;
+        return;
+      }
+
+      grid.innerHTML = products.map((prod, idx) => `
+        <div class="item-card">
+          <div class="item-card__body">
+            <div class="item-card__meta">
+              <span class="feat-card__num">${prod.num || String(idx + 1).padStart(2, '0')}</span>
+              <span class="mono-label">${escapeHTML(prod.timeline || '7–10 Days')}</span>
+            </div>
+            <h3 style="font-size: 1.25rem; margin: 0.3rem 0;">${escapeHTML(prod.title)}</h3>
+            <p style="font-size: 1.4rem; color: var(--cta-gold, var(--admin-accent)); font-weight: 700; margin: 0.2rem 0;">
+              <span style="font-size: 0.8rem; font-weight: 400; color: var(--admin-text-muted);">${escapeHTML(prod.price_prefix || 'Starting from')}</span> ${escapeHTML(prod.price)}
+            </p>
+            <p class="mono-label" style="font-size: 0.75rem; color: var(--admin-text-muted); margin: 0.4rem 0;">
+              Best for: <span style="color: var(--admin-text-main);">${escapeHTML(prod.best_for || '')}</span>
+            </p>
+            <p style="font-size: 0.85rem; color: var(--admin-text-muted); margin: 0.5rem 0 0 0; line-height: 1.4; flex: 1;">
+              ${escapeHTML(prod.description || '')}
+            </p>
+            <div class="item-card__actions">
+              <button class="btn-admin btn-admin--secondary btn-admin--sm" onclick="editProduct('${prod.id}')">Edit</button>
+              <button class="btn-admin btn-admin--danger btn-admin--sm" onclick="deleteProduct('${prod.id}')">Delete</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openProductModal(prod = null) {
+      document.getElementById('product-form').reset();
+      if (prod) {
+        document.getElementById('product-modal-title').textContent = 'Edit Product';
+        document.getElementById('product-id-input').value = prod.id;
+        document.getElementById('product-title-input').value = prod.title;
+        document.getElementById('product-price-input').value = prod.price;
+        document.getElementById('product-prefix-input').value = prod.price_prefix || 'Starting from';
+        document.getElementById('product-timeline-input').value = prod.timeline || '7–10 Days';
+        document.getElementById('product-bestfor-input').value = prod.best_for || '';
+        document.getElementById('product-desc-input').value = prod.description || '';
+      } else {
+        document.getElementById('product-modal-title').textContent = 'Add Product';
+        document.getElementById('product-id-input').value = '';
+        document.getElementById('product-prefix-input').value = 'Starting from';
+        document.getElementById('product-timeline-input').value = '7–10 Days';
+      }
+      document.getElementById('product-modal').style.display = 'flex';
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-modal').style.display = 'none';
+    }
+
+    function editProduct(id) {
+      const prod = quillCMS.getProducts().find(p => p.id === id);
+      if (prod) openProductModal(prod);
+    }
+
+    async function deleteProduct(id) {
+      if (!confirm('Are you sure you want to delete this product?')) return;
+      await quillCMS.deleteProduct(id);
+      loadAllDashboardData();
+      showToast('✓ Product deleted');
+    }
+
+    async function handleSaveProduct(e) {
+      e.preventDefault();
+      const prod = {
+        id: document.getElementById('product-id-input').value || undefined,
+        title: document.getElementById('product-title-input').value.trim(),
+        price: document.getElementById('product-price-input').value.trim(),
+        price_prefix: document.getElementById('product-prefix-input').value.trim(),
+        timeline: document.getElementById('product-timeline-input').value.trim(),
+        best_for: document.getElementById('product-bestfor-input').value.trim(),
+        description: document.getElementById('product-desc-input').value.trim(),
+      };
+
+      await quillCMS.saveProduct(prod);
+      closeProductModal();
+      loadAllDashboardData();
+      showToast('✓ Product saved live to website!');
+    }
+
+    // --- 9. LEADS CONTROLLER ---
+    function renderLeadsTable(searchTerm = '') {
+      const tbody = document.getElementById('leads-tbody');
+      let leads = quillCMS.getLeads();
+
+      if (searchTerm) {
+        const q = searchTerm.toLowerCase();
+        leads = leads.filter(l => 
+          (l.name || '').toLowerCase().includes(q) ||
+          (l.email || '').toLowerCase().includes(q) ||
+          (l.message || '').toLowerCase().includes(q) ||
+          (l.track || '').toLowerCase().includes(q)
+        );
+      }
+
+      if (!leads.length) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 2.5rem; color: var(--admin-text-muted); font-family: var(--font-mono);">No customer enquiries found. Submissions from the contact form will appear here.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = leads.map(lead => `
+        <tr>
+          <td style="font-family: var(--font-mono); font-size: 0.78rem; white-space: nowrap; color: var(--admin-text-muted);">
+            ${new Date(lead.created_at).toLocaleDateString()}<br>
+            <span style="font-size: 0.7rem;">${new Date(lead.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+          </td>
+          <td>
+            <strong>${escapeHTML(lead.name)}</strong><br>
+            <a href="mailto:${escapeHTML(lead.email)}?subject=Re:%20Strategy%20Call%20—%20Quill%20Labs" style="color: var(--cta-gold, var(--admin-accent)); font-size: 0.82rem; text-decoration: none;">
+              ${escapeHTML(lead.email)}
+            </a>
+          </td>
+          <td>
+            <span class="tag tag--business" style="font-size: 0.7rem;">${escapeHTML(lead.track || 'Local Business')}</span><br>
+            <span style="font-size: 0.78rem; color: var(--admin-text-muted);">Budget: ${escapeHTML(lead.budget || 'Not stated')}</span>
+          </td>
+          <td style="max-width: 380px;">
+            <p style="margin: 0; font-size: 0.85rem; line-height: 1.45; background: #000; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--admin-border);">
+              ${escapeHTML(lead.message)}
+            </p>
+          </td>
+          <td style="text-align: right; white-space: nowrap;">
+            <a href="mailto:${escapeHTML(lead.email)}?subject=Re:%20Strategy%20Call%20—%20Quill%20Labs" class="btn-admin btn-admin--secondary btn-admin--sm" style="margin-right: 0.4rem;">
+              Reply ✉
+            </a>
+            <button class="btn-admin btn-admin--danger btn-admin--sm" onclick="deleteLeadItem('${lead.id}')">
+              ✕
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function exportLeads() {
+      const ok = quillCMS.exportLeadsCSV();
+      if (ok) {
+        showToast('✓ Leads CSV downloaded to your computer!');
+      } else {
+        alert('No leads available to export.');
+      }
+    }
+
+    async function deleteLeadItem(id) {
+      if (!confirm('Are you sure you want to delete this lead?')) return;
+      await quillCMS.deleteLead(id);
+      loadAllDashboardData();
+      showToast('✓ Lead deleted');
+    }
+
+    // --- 10. DATABASE & SETTINGS CONTROLLER ---
+    function saveSupabaseConfig() {
+      const url = document.getElementById('supabase-url-input').value.trim();
+      const key = document.getElementById('supabase-key-input').value.trim();
+      quillCMS.setSupabaseConfig(url, key);
+      loadAllDashboardData();
+      showToast('✓ Database credentials saved!');
+    }
+
+    async function testDatabaseConnection() {
+      const url = document.getElementById('supabase-url-input').value.trim();
+      const key = document.getElementById('supabase-key-input').value.trim();
+      const resEl = document.getElementById('db-test-result');
+
+      if (!url || !key) {
+        resEl.innerHTML = '<span style="color: var(--admin-crimson);">Please enter both Supabase URL and Anon Key.</span>';
+        return;
+      }
+
+      resEl.innerHTML = '<span style="color: var(--admin-blue);">Connecting to Supabase...</span>';
+      const result = await quillCMS.testConnection(url, key);
+
+      if (result.success) {
+        resEl.innerHTML = '<span style="color: var(--admin-emerald);">✓ Connection Successful! Connected to Supabase tables.</span>';
+        showToast('✓ Supabase Connection Verified');
+      } else {
+        resEl.innerHTML = `<span style="color: var(--admin-crimson);">✕ Connection Failed: ${result.error}</span><br><small style="color: var(--admin-text-muted);">Ensure you have executed the migration script from supabase_schema.sql in your Supabase SQL Editor.</small>`;
+      }
+    }
+
+    function exportJSONBackup() {
+      quillCMS.exportAllJSON();
+      showToast('✓ Complete CMS backup downloaded as JSON');
+    }
+
+    function importJSONBackup(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = async (evt) => {
+        const res = await quillCMS.importAllJSON(evt.target.result);
+        if (res.success) {
+          loadAllDashboardData();
+          showToast('✓ Backup successfully restored!');
+        } else {
+          alert('Error restoring backup: ' + res.error);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetDefaults() {
+      if (!confirm('Are you sure you want to reset all website data to factory defaults? All custom additions will be reverted.')) return;
+      quillCMS.resetToDefaults();
+      loadAllDashboardData();
+      showToast('✓ Reset to factory defaults completed');
+    }
+
+    function escapeHTML(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', checkAuth);
+  </script>
+
+  <!-- Interactive Components (Spring Cursor Follower) -->
+  <script src="./js/components.js"></script>
+</body>
+</html>

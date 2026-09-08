@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Process — Quill Labs</title>
+  <meta name="description" content="How Quill Labs works: the Website OS, the Attention → Trust → Action → Growth framework, sample projects, and the build process.">
+  
+  <!-- Favicon / Circular Logo -->
+  <link rel="icon" type="image/png" href="./circular logo.png">
+  <link rel="apple-touch-icon" href="./circular logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="./css/main.css">
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Supabase JS CDN (Optional Cloud Sync) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="section--dark">
+
+  <!-- Top Brand & Navigation Bar -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="v1home.html" aria-label="Quill Labs — home">
+        <span class="brand">
+          <img class="brand__mark" data-cms-src="brand_logo" src="./main quill.png" alt="Quill Logo" width="36" height="36">
+          <span class="brand__name"><span data-cms="brand_name">Quill Labs</span><span class="sys">.sys</span></span>
+        </span>
+      </a>
+
+      <!-- Top Glass Dock Navigation -->
+      <nav class="top-nav-dock" aria-label="Primary Navigation">
+        <a class="dock-item" href="v1home.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V10.5339C3 9.57062 3.46259 8.66591 4.24353 8.1019L10.2435 3.76856C11.2921 3.01128 12.7079 3.01128 13.7565 3.76856L19.7565 8.1019C20.5374 8.66591 21 9.57062 21 10.5339V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18Z"></path></svg>
+          <span>Home</span>
+        </a>
+        <a class="dock-item" href="v1 services.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          <span>Services</span>
+        </a>
+        <a class="dock-item" href="v1 ourprocess.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 9.39536 18.8605 7.3637 16C6.06474 14.1711 5 12.0475 5 10C5 6.134 8.134 3 12 3C15.866 3 19 6.134 19 10C19 12.0475 17.9353 14.1711 16.6363 16C14.6046 18.8605 12 21 12 21Z"></path></svg>
+          <span>Our Process</span>
+        </a>
+        <a class="dock-item" href="v1 abt.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
+          <span>About</span>
+        </a>
+        <a class="dock-item" href="v1 contact.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+          <span>Contact</span>
+        </a>
+      </nav>
+
+      <!-- Actions & Theme Toggle -->
+      <div class="header-actions">
+        <label class="theme-switch" aria-label="Toggle Theme">
+          <input type="checkbox" class="theme-switch__checkbox">
+          <div class="theme-switch__container">
+            <div class="theme-switch__clouds"></div>
+            <div class="theme-switch__stars-container">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <div class="theme-switch__circle-container">
+              <div class="theme-switch__sun-moon-container">
+                <div class="theme-switch__moon">
+                  <div class="theme-switch__spot"></div>
+                  <div class="theme-switch__spot"></div>
+                  <div class="theme-switch__spot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </label>
+
+        <a class="btn btn--primary" href="v1 contact.html">Book a strategy call</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Page Hero -->
+    <section class="section blueprint-grid" style="padding-bottom: 2rem;">
+      <div class="container">
+        <p class="mono-label reveal" style="margin-bottom: 1.5rem;"><a href="v1home.html" style="color: var(--cta-gold);">Home</a> / Our Process</p>
+        <div class="section-head reveal">
+          <span class="eyebrow">How we work</span>
+          <h1>Why you should trust the process.</h1>
+          <p class="lede">A structured method, a proven framework, sample work, and a build process with no surprises.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Website OS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How we work</span>
+          <h2>The Website OS.</h2>
+          <p class="lede">Six stages, one job each. A structured process is what makes results predictable.</p>
+        </div>
+        <section class="flow" aria-label="The BuildWithQuill method, six stages">
+          <div class="flow__node reveal" data-delay="0">
+            <h3>Research</h3>
+            <p>We study the market, the audience, and the problem before anything is designed.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="1">
+            <h3>Strategy</h3>
+            <p>We map the message, the funnel, and the outcome the site must produce.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="2">
+            <h3>Content</h3>
+            <p>We shape the words and structure that will carry the story.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="3">
+            <h3>Design</h3>
+            <p>We design around the content and the conversion path.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="3">
+            <h3>Development</h3>
+            <p>We build fast, with performance and accessibility baked in.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="3">
+            <h3>Launch</h3>
+            <p>We ship, measure, and iterate using real data.</p>
+          </div>
+        </section>
+        <p class="annot annot--fig">FIG. 03 — THE BUILDWITHQUILL WEBSITE OS</p>
+      </div>
+    </section>
+
+    <!-- 4-Move Framework -->
+    <section class="section section--tint">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Framework</span>
+          <h2>Every project is designed around four moves.</h2>
+          <p class="lede">Attention, trust, action, growth. If any step is weak, the system leaks.</p>
+        </div>
+        <div class="flow">
+          <div class="flow__node reveal" data-delay="0">
+            <h3>Attention</h3>
+            <p>Earning the first look — the page, ad, or post that stops the scroll.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="1">
+            <h3>Trust</h3>
+            <p>Credibility built through design, content, and proof.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="2">
+            <h3>Action</h3>
+            <p>The clear step that turns interest into an enquiry or a sale.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="3">
+            <h3>Growth</h3>
+            <p>Systems and automation that scale what works.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spec Projects Showcase with Filtering -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Projects</span>
+          <h2>Spec projects and concepts.</h2>
+          <p class="lede">Sample work built with the same method we'd use on yours. Real client projects will join them as they launch.</p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar reveal" role="group" aria-label="Filter projects by track">
+          <button class="filter-btn is-active" type="button" data-filter="all">All</button>
+          <button class="filter-btn" type="button" data-filter="business">Business</button>
+          <button class="filter-btn" type="button" data-filter="creator">Creator</button>
+        </div>
+
+        <div class="work-grid" data-work-grid data-cms-work-cards data-show-all="true">
+          <!-- Business 1 -->
+          <div class="reveal" data-delay="0" data-track="business">
+            <article class="work-card">
+              <a class="work-card__thumb" href="v1 contact.html" aria-label="Enquire about Dental Clinic">
+                <img src="./v1 ourprocess_files/398-960x600.jpg" alt="Concept website build for a dental clinic" width="960" height="600" loading="lazy">
+                <span class="tag tag--concept work-card__badge">Concept work</span>
+              </a>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="tag tag--business">Local Business Launch</span>
+                  <span class="mono-label">Lead Generation System</span>
+                </div>
+                <h3>Dental Clinic</h3>
+                <p>A stable clinic with a brochure website and enquiries scattered across WhatsApp — no way to measure or manage demand.</p>
+                <p class="outcome"><span>→</span> Qualified bookings without manual chasing.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Business 2 -->
+          <div class="reveal" data-delay="1" data-track="business">
+            <article class="work-card">
+              <a class="work-card__thumb" href="v1 contact.html" aria-label="Enquire about Neighborhood Restaurant">
+                <img src="./v1 ourprocess_files/511-960x600.jpg" alt="Concept online ordering build for a restaurant" width="960" height="600" loading="lazy">
+                <span class="tag tag--concept work-card__badge">Concept work</span>
+              </a>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="tag tag--business">Local Business Launch</span>
+                  <span class="mono-label">Online Ordering System</span>
+                </div>
+                <h3>Neighborhood Restaurant</h3>
+                <p>Loyal regulars and no online ordering — every order depends on a phone call during service hours.</p>
+                <p class="outcome"><span>→</span> Orders keep coming in when the phone isn't.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Business 3 -->
+          <div class="reveal" data-delay="2" data-track="business">
+            <article class="work-card">
+              <a class="work-card__thumb" href="v1 contact.html" aria-label="Enquire about Auto Dealership">
+                <img src="./v1 ourprocess_files/516-960x600.jpg" alt="Concept inventory build for an auto dealership" width="960" height="600" loading="lazy">
+                <span class="tag tag--concept work-card__badge">Concept work</span>
+              </a>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="tag tag--business">Local Business Launch</span>
+                  <span class="mono-label">Inventory + Lead Capture</span>
+                </div>
+                <h3>Auto Dealership</h3>
+                <p>Full inventory but only a brochure website — customers can't see stock or enquire without a visit.</p>
+                <p class="outcome"><span>→</span> Walk-ins turn into booked test drives.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Creator 1 -->
+          <div class="reveal" data-delay="0" data-track="creator">
+            <article class="work-card">
+              <a class="work-card__thumb" href="v1 contact.html" aria-label="Enquire about Knowledge Creator">
+                <img src="./v1 ourprocess_files/918-960x600.jpg" alt="Concept creator business system build" width="960" height="600" loading="lazy">
+                <span class="tag tag--concept work-card__badge">Concept work</span>
+              </a>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="tag tag--creator">Creator Launch</span>
+                  <span class="mono-label">Creator Business System</span>
+                </div>
+                <h3>Knowledge Creator</h3>
+                <p>Thousands of followers and a Linktree — attention converts nowhere, and revenue depends on DMs.</p>
+                <p class="outcome"><span>→</span> The audience finally has a place to buy.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Creator 2 -->
+          <div class="reveal" data-delay="1" data-track="creator">
+            <article class="work-card">
+              <a class="work-card__thumb" href="v1 contact.html" aria-label="Enquire about Course Creator">
+                <img src="./v1 ourprocess_files/160-960x600.jpg" alt="Concept course ecosystem build" width="960" height="600" loading="lazy">
+                <span class="tag tag--concept work-card__badge">Concept work</span>
+              </a>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="tag tag--creator">Creator Launch</span>
+                  <span class="mono-label">Product Ecosystem</span>
+                </div>
+                <h3>Course Creator</h3>
+                <p>A great course sold manually through social media — no sales page, no checkout, no follow-up.</p>
+                <p class="outcome"><span>→</span> Course sales on autopilot after the launch.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Creator 3 -->
+          <div class="reveal" data-delay="2" data-track="creator">
+            <article class="work-card">
+              <a class="work-card__thumb" href="v1 contact.html" aria-label="Enquire about Coach / Consultant">
+                <img src="./v1 ourprocess_files/309-960x600.jpg" alt="Concept coaching customer journey build" width="960" height="600" loading="lazy">
+                <span class="tag tag--concept work-card__badge">Concept work</span>
+              </a>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="tag tag--creator">Creator Launch</span>
+                  <span class="mono-label">Customer Journey System</span>
+                </div>
+                <h3>Coach / Consultant</h3>
+                <p>Bookings handled by email, questions repeated on every call, no structured path after payment.</p>
+                <p class="outcome"><span>→</span> From first contact to delivered result without friction.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Build Process / Experience -->
+    <section class="section section--dark">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Build process</span>
+          <h2>What working with us feels like.</h2>
+        </div>
+        <div class="value-list">
+          <div class="value-cell reveal" data-delay="0">
+            <h3>Timelines</h3>
+            <p>Every foundation has a published timeline — 5 days to 4 weeks depending on the tier. You'll know the date before we start.</p>
+          </div>
+          <div class="value-cell reveal" data-delay="1">
+            <h3>Communication</h3>
+            <p>One direct line to the people building your system. No account managers, no layers.</p>
+          </div>
+          <div class="value-cell reveal" data-delay="2">
+            <h3>Revisions</h3>
+            <p>Structured feedback rounds at each stage, so changes are caught early and never snowball.</p>
+          </div>
+          <div class="value-cell reveal" data-delay="3">
+            <h3>Launch</h3>
+            <p>We deploy, hand over the keys, and stay to measure and refine using real data.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Band -->
+    <section class="cta-band">
+      <div class="blueprint-grid" style="position: absolute; inset: 0" aria-hidden="true"></div>
+      <div class="container" style="position: relative; padding-block: clamp(4.5rem, 9vw, 7rem)">
+        <div class="cta-band__inner reveal">
+          <span class="eyebrow">Next step</span>
+          <h2>Like what you see? Let's build one for your business.</h2>
+          <p class="lede">Sample work is just the start. A strategy call turns it into a system that captures your customers.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="v1 contact.html">Book a strategy call</a>
+            <a class="btn btn--ghost-light" href="v1 contact.html#form">Send an enquiry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <span class="brand">
+            <img class="brand__mark" src="./main quill.png" alt="Quill Labs" width="32" height="32">
+            <span class="brand__name">Quill Labs<span class="sys">.sys</span></span>
+          </span>
+          <p class="site-footer__tagline">Connect the Value. Capture the Sale.</p>
+          <p class="site-footer__statement">We don't build websites. We build business systems that connect attention to revenue.</p>
+          <a class="btn btn--primary" href="v1 contact.html">Book a strategy call</a>
+        </div>
+        <nav aria-label="Footer — studio">
+          <h3>Studio</h3>
+          <a href="v1home.html">Home</a>
+          <a href="v1 services.html">Services</a>
+          <a href="v1 ourprocess.html">Our Process</a>
+          <a href="v1 abt.html">About</a>
+          <a href="v1 contact.html">Contact</a>
+          <a href="admin.html" style="color: var(--cta-gold); font-weight: 600;">Admin / CMS ↗</a>
+        </nav>
+        <div>
+          <h3>Tracks</h3>
+          <a href="v1 services.html#business">Local Business Launch</a>
+          <a href="v1 services.html#creator">Creator Launch</a>
+          <a href="mailto:buildbyquill@gmail.com">buildbyquill@gmail.com</a>
+        </div>
+        <div class="site-footer__cta">
+          <h3>Get started</h3>
+          <p>A free strategy call. No pitch deck, no obligation.</p>
+          <a class="btn btn--ghost-light" href="v1 contact.html">Start here</a>
+          <p class="mono-label" style="margin-top: 0.5rem;">Response within one business day</p>
+        </div>
+      </div>
+      <div class="site-footer__bar">
+        <span>© 2026 Quill Labs — Business Systems Studio</span>
+        <span>quilllabs.systems</span>
+        <span>Built with the Quill Labs Method</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quill Labs CMS Client Engine -->
+  <script src="./js/cms-client.js"></script>
+  <!-- Interactive Components JS -->
+  <script src="./js/components.js"></script>
+</body>
+</html>
