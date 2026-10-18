@@ -1,0 +1,28 @@
+# Cloudflare Pages Headers
+
+# Sitemap XML
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+# Sitemap XSL Stylesheet
+/sitemap.xsl
+  Content-Type: text/xsl; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+# Robots TXT
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+# Google Search Console Verification File
+/google97559b59750a52f8.html
+  Content-Type: text/html; charset=utf-8
+
+# Prevent indexing of 404 page
+/404.html
+  X-Robots-Tag: noindex, nofollow
+
+# Prevent indexing of Admin route
+/admin/*
+  X-Robots-Tag: noindex, nofollow, noarchive

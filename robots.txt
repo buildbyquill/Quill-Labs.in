@@ -1,7 +1,12 @@
 # robots.txt for Quill Labs
+# Domain: https://quill-lab.runs-on.dev
+
 User-agent: *
 Allow: /
-Disallow: /admin.html
 Disallow: /admin
+Disallow: /admin/
+Disallow: /admin.html
+Disallow: /404.html
 
-Sitemap: https://quill-labs-in.buildbyquill.workers.dev/sitemap.xml
+# Sitemap location
+Sitemap: https://quill-lab.runs-on.dev/sitemap.xml
