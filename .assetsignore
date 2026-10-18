@@ -2,7 +2,7 @@
 .git/**
 .wrangler
 .wrangler/**
+wrangler.json
 wrangler.jsonc
 .gitignore
 .assetsignore
-

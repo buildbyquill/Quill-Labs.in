@@ -1,11 +1,12 @@
-# Redirects for old URLs with spaces/v1 prefix
-/v1%20contact.html    /contact      301
-/v1%20services.html   /services     301
-/v1%20ourprocess.html /ourprocess   301
-/v1%20abt.html        /about        301
-/v1%20home.html       /             301
-/v1%20home            /             301
-/v1%20contact         /contact      301
-/v1%20services        /services     301
-/v1%20ourprocess      /ourprocess   301
-/v1%20abt             /about        301
+/./* /404.html 404
+/workers-site/* /404.html 404
+/v1%20contact.html /contact 301
+/v1%20contact /contact 301
+/v1%20services.html /services 301
+/v1%20services /services 301
+/v1%20ourprocess.html /ourprocess 301
+/v1%20ourprocess /ourprocess 301
+/v1%20abt.html /about 301
+/v1%20abt /about 301
+/v1%20home.html / 301
+/v1%20home / 301
