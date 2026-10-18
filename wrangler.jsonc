@@ -1,8 +1,13 @@
 {
+  // wrangler.jsonc — Quill Labs Worker configuration
   "name": "quill-labs-in",
-  "compatibility_date": "2026-09-08",
-  "workers_dev": true,
+  "compatibility_date": "2025-03-01",
+  "main": "workers-site/index.js",
+
+  // Static assets configuration
   "assets": {
-    "directory": "./"
+    "directory": "./",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
   }
 }

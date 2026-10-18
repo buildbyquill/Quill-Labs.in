@@ -15,7 +15,7 @@
   const STORAGE_KEYS = {
     CONTENT: 'quill_cms_content_v2',
     PRODUCTS: 'quill_cms_products_v2',
-    WORK_CARDS: 'quill_cms_work_cards_v2',
+    WORK_CARDS: 'quill_cms_work_cards_v5',
     LEADS: 'quill_cms_leads_v2',
     CONFIG: 'quill_cms_supabase_config_v2',
   };
@@ -73,117 +73,98 @@
       num: '03',
       sort_order: 3,
     },
-    {
-      id: 'prod_4',
-      title: 'Custom CMS & Lead CRM',
-      price: '₹15,000',
-      price_prefix: 'Starting from',
-      timeline: '1–2 Weeks',
-      best_for: 'Growing local businesses',
-      description: 'Self-service admin dashboard, dynamic content, and automated lead capture.',
-      num: '04',
-      sort_order: 4,
-    },
   ];
 
   const DEFAULT_WORK_CARDS = [
     {
-      id: 'work_1',
-      title: 'Destiny Laboratories',
+      id: 'work_nukkar_dhaba',
+      title: 'Nukkar Dhaba',
       track: 'business',
-      system_type: 'Motion Website + WhatsApp',
-      image_url: './v1home_files/Screenshot 2026-09-03 170422.png',
-      badge: 'Client project',
-      problem: 'A trust-led pharmaceutical brand needing a modern digital presence and direct customer channel.',
-      outcome: 'A modern digital presence with useful WhatsApp integration.',
-      client_review: 'Really happy with the website developed by QUILL LABS. The final website was exactly what we needed.',
-      client_name: 'Amit Rajan, Owner — Destiny Laboratories',
-      link_url: 'https://destinylaboratories.com/',
+      system_type: 'Restaurant Website',
+      image_url: './assets/projects/nukkar-dhaba.jpg',
+      badge: 'Sample',
+      problem: 'Authentic flavours, hearty meals, and the warmth of a traditional Nukkar Dhaba.',
+      outcome: 'Built for authentic flavours and real people.',
+      client_review: 'The website gives Nukkar Dhaba exactly the kind of warm, authentic feel we wanted. The food imagery, typography, and overall experience make the brand feel much more premium while still keeping its traditional identity.',
+      client_name: 'Restaurant Owner, Nukkar Dhaba',
+      rating: '★★★★★',
+      link_url: 'https://nukkar-dhaba.jaiozas544.workers.dev/',
       sort_order: 1,
     },
     {
-      id: 'work_2',
-      title: 'Dental Clinic',
+      id: 'work_novelty_restaurant',
+      title: 'Novelty Restaurant',
       track: 'business',
-      system_type: 'Lead Generation System',
-      image_url: './v1home_files/398-960x600.jpg',
-      badge: 'Concept work',
-      problem: 'A stable clinic with a brochure website and enquiries scattered across WhatsApp — no way to measure or manage demand.',
-      outcome: 'Qualified bookings without manual chasing.',
-      client_review: '',
-      client_name: '',
-      link_url: 'v1 contact.html',
+      system_type: 'Restaurant Website',
+      image_url: './assets/projects/novelty-restaurant.png',
+      badge: 'Sample',
+      problem: 'For generations, Novelty Restaurant has brought the warmth, richness and character of North Indian cuisine to Chandigarh.',
+      outcome: 'Built for authentic flavours and timeless experiences.',
+      client_review: 'The new website captures the heritage of Novelty beautifully. It feels elegant, modern, and easy to navigate, while the visual storytelling does a great job of communicating the restaurant’s legacy.',
+      client_name: 'Restaurant Owner, Novelty Restaurant',
+      rating: '★★★★★',
+      link_url: 'https://novelty-restaurant.jaiozas544.workers.dev/',
       sort_order: 2,
     },
     {
-      id: 'work_3',
-      title: 'Neighborhood Restaurant',
+      id: 'work_frontier_raas',
+      title: 'FrontierRaas',
       track: 'business',
-      system_type: 'Online Ordering System',
-      image_url: './v1home_files/511-960x600.jpg',
-      badge: 'Concept work',
-      problem: 'Loyal regulars and no online ordering — every order depends on a phone call during service hours.',
-      outcome: "Orders keep coming in when the phone isn't.",
-      client_review: '',
-      client_name: '',
-      link_url: 'v1 contact.html',
+      system_type: 'Couture Website',
+      image_url: './assets/projects/frontier-raas.png',
+      badge: 'Sample',
+      problem: 'Exquisite Indian and Indo-Western fashion, thoughtfully customized for weddings, celebrations, and unforgettable occasions.',
+      outcome: 'Built for luxury fashion, tradition and you.',
+      client_review: 'The website feels premium from the first screen. The design brings together our craftsmanship, luxury positioning, and cultural identity without making the experience feel overwhelming. A very polished result.',
+      client_name: 'Founder, FrontierRaas',
+      rating: '★★★★☆',
+      link_url: 'https://frontier-raas.jaiozas544.workers.dev/',
       sort_order: 3,
     },
     {
-      id: 'work_4',
-      title: 'Auto Dealership',
+      id: 'work_garg_chaat',
+      title: 'Garg Chaat',
       track: 'business',
-      system_type: 'Inventory + Lead Capture',
-      image_url: './v1home_files/516-960x600.jpg',
-      badge: 'Concept work',
-      problem: "Full inventory but only a brochure website — customers can't see stock or enquire without a visit.",
-      outcome: 'Walk-ins turn into booked test drives.',
-      client_review: '',
-      client_name: '',
-      link_url: 'v1 contact.html',
+      system_type: 'Restaurant Website',
+      image_url: './assets/projects/garg-chaat.png',
+      badge: 'Sample',
+      problem: 'Bold Indian flavours, fresh ingredients, and an unforgettable elevated street-food experience.',
+      outcome: 'Built for authentic flavours, modern experiences.',
+      client_review: 'The website elevates our brand beyond a traditional street-food stall. Bold visuals and seamless mobile navigation make it easy for regulars and new visitors alike.',
+      client_name: 'Owner, Garg Chaat',
+      rating: '★★★★★',
+      link_url: 'https://garg-chaat.jaiozas544.workers.dev/',
       sort_order: 4,
     },
     {
-      id: 'work_5',
-      title: 'Knowledge Creator',
-      track: 'creator',
-      system_type: 'Creator Business System',
-      image_url: './v1 ourprocess_files/918-960x600.jpg',
-      badge: 'Concept work',
-      problem: 'Thousands of followers and a Linktree — attention converts nowhere, and revenue depends on DMs.',
-      outcome: 'The audience finally has a place to buy.',
-      client_review: '',
-      client_name: '',
-      link_url: 'v1 contact.html',
+      id: 'work_seven_cafe',
+      title: 'Seven',
+      track: 'business',
+      system_type: 'Restaurant Website',
+      image_url: './assets/projects/seven-cafe.jpg',
+      badge: 'Sample',
+      problem: 'A contemporary café experience built around bold flavours, great coffee, and unforgettable moments.',
+      outcome: 'Built for good food, great vibes.',
+      client_review: 'The website finally reflects the atmosphere we want customers to experience when they visit Seven. The visuals, typography, and layout feel modern and sophisticated while keeping the focus on food and the café experience.',
+      client_name: 'Founder, Seven',
+      rating: '★★★★★',
+      link_url: 'https://seven-the-cafe-by-big-jerks.jaiozas544.workers.dev/',
       sort_order: 5,
     },
     {
-      id: 'work_6',
-      title: 'Course Creator',
-      track: 'creator',
-      system_type: 'Product Ecosystem',
-      image_url: './v1 ourprocess_files/160-960x600.jpg',
-      badge: 'Concept work',
-      problem: 'A great course sold manually through social media — no sales page, no checkout, no follow-up.',
-      outcome: 'Course sales on autopilot after the launch.',
-      client_review: '',
-      client_name: '',
-      link_url: 'v1 contact.html',
+      id: 'work_destiny_labs',
+      title: 'Destiny Laboratories',
+      track: 'business',
+      system_type: 'Motion Website + WhatsApp',
+      image_url: './assets/projects/destiny-laboratories.png',
+      badge: 'Client project',
+      problem: 'A trust-led pharmaceutical brand needing a modern digital presence and direct customer channel.',
+      outcome: 'A modern digital presence with useful WhatsApp integration.',
+      client_review: 'Really happy with the website developed by QUILL LABS. The final website was exactly what we needed. All the features we needed were included, especially the WhatsApp integration, which is very useful for our business.',
+      client_name: 'Amit Rajan, Owner — Destiny Laboratories',
+      rating: '★★★★★',
+      link_url: 'https://destinylaboratories.com/',
       sort_order: 6,
-    },
-    {
-      id: 'work_7',
-      title: 'Coach / Consultant',
-      track: 'creator',
-      system_type: 'Customer Journey System',
-      image_url: './v1 ourprocess_files/309-960x600.jpg',
-      badge: 'Concept work',
-      problem: 'Bookings handled by email, questions repeated on every call, no structured path after payment.',
-      outcome: 'From first contact to delivered result without friction.',
-      client_review: '',
-      client_name: '',
-      link_url: 'v1 contact.html',
-      sort_order: 7,
     },
   ];
 
@@ -202,9 +183,33 @@
       }
       if (!localStorage.getItem(STORAGE_KEYS.PRODUCTS)) {
         localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(DEFAULT_PRODUCTS));
+      } else {
+        // Prune removed prod_4 from existing storage if present
+        try {
+          const prods = JSON.parse(localStorage.getItem(STORAGE_KEYS.PRODUCTS) || '[]');
+          if (Array.isArray(prods)) {
+            const cleaned = prods.filter((p) => p.id !== 'prod_4');
+            if (cleaned.length !== prods.length) {
+              localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(cleaned));
+            }
+          }
+        } catch (e) {}
       }
       if (!localStorage.getItem(STORAGE_KEYS.WORK_CARDS)) {
         localStorage.setItem(STORAGE_KEYS.WORK_CARDS, JSON.stringify(DEFAULT_WORK_CARDS));
+      } else {
+        // Prune removed creator cards from existing storage if present
+        try {
+          const cards = JSON.parse(localStorage.getItem(STORAGE_KEYS.WORK_CARDS) || '[]');
+          if (Array.isArray(cards)) {
+            const cleaned = cards.filter(
+              (c) => c.track !== 'creator' && !['work_5', 'work_6', 'work_7'].includes(c.id)
+            );
+            if (cleaned.length !== cards.length) {
+              localStorage.setItem(STORAGE_KEYS.WORK_CARDS, JSON.stringify(cleaned));
+            }
+          }
+        } catch (e) {}
       }
       if (!localStorage.getItem(STORAGE_KEYS.LEADS)) {
         localStorage.setItem(STORAGE_KEYS.LEADS, JSON.stringify([]));
@@ -720,26 +725,40 @@
         container.innerHTML = displayCards
           .map((card, index) => {
             const trackLabel = card.track === 'creator' ? 'Creator Launch' : 'Local Business Launch';
-            const badgeClass = card.badge === 'Client project' ? 'tag--business' : 'tag--concept';
-            const isFeatured = card.badge === 'Client project' || index === 0;
+            const isSample = (card.badge || '').toLowerCase() === 'sample';
+            const badgeClass = card.badge === 'Client project' ? 'tag--business' : (isSample ? 'tag--sample' : 'tag--concept');
+            const isFeatured = card.badge === 'Client project';
+            const hasExternalLink = Boolean(card.link_url && card.link_url !== '#' && card.link_url.startsWith('http'));
+            const isPlaceholderLink = !card.link_url || card.link_url === '#' || card.link_url === '';
+            const thumbHref = hasExternalLink ? this.escapeHTML(card.link_url) : (isPlaceholderLink ? 'v1 contact.html' : this.escapeHTML(card.link_url));
+            const thumbTarget = hasExternalLink ? 'target="_blank" rel="noopener noreferrer"' : '';
 
             let reviewMarkup = '';
             if (card.client_review) {
+              const stars = card.rating || '★★★★★';
               reviewMarkup = `
-                <figure class="client-review reveal is-inview" data-delay="1" style="margin-top: 1rem;">
-                  <div class="client-review__stars" aria-label="5 out of 5 stars" style="color: var(--cta-gold); font-size: 0.9rem;">★★★★★</div>
-                  <blockquote style="font-size: 0.95rem; margin-top: 0.35rem; color: var(--text-primary); font-style: italic;">“${this.escapeHTML(card.client_review)}”</blockquote>
-                  ${card.client_name ? `<figcaption style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.25rem;"><strong>${this.escapeHTML(card.client_name)}</strong></figcaption>` : ''}
+                <figure class="client-review reveal is-inview" data-delay="1" style="margin-top: 1.25rem; padding: 1rem 1.25rem; border-left: 3px solid var(--cta-gold); background: rgba(216, 144, 50, 0.04); border-radius: 0 8px 8px 0;">
+                  <div class="client-review__stars" aria-label="${stars}" style="color: var(--cta-gold); font-size: 0.95rem; letter-spacing: 0.1em;">${stars}</div>
+                  <blockquote style="font-size: 0.9rem; line-height: 1.6; margin-top: 0.4rem; color: var(--text-primary); font-style: italic;">“${this.escapeHTML(card.client_review)}”</blockquote>
+                  ${card.client_name ? `<figcaption style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.4rem;">— <strong>${this.escapeHTML(card.client_name)}</strong></figcaption>` : ''}
                 </figure>
               `;
             }
 
+            const visitBtnMarkup = hasExternalLink
+              ? `<a class="btn btn--primary" href="${this.escapeHTML(card.link_url)}" target="_blank" rel="noopener noreferrer" style="padding: 0.55rem 1.1rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                   <span>Visit Site</span> <span style="font-family: var(--font-mono, monospace);">↗</span>
+                 </a>`
+              : `<a class="btn btn--primary" href="javascript:void(0)" onclick="alert('Live site link for ${this.escapeHTML(card.title)} will be active shortly! You can also enquire about this system below.');" style="padding: 0.55rem 1.1rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                   <span>Visit Site</span> <span style="font-family: var(--font-mono, monospace);">↗</span>
+                 </a>`;
+
             return `
               <div class="reveal is-inview" data-delay="${index % 3}" data-track="${this.escapeHTML(card.track || 'business')}">
                 <article class="work-card ${isFeatured ? 'work-card--featured' : ''}" style="height: 100%;">
-                  <a class="work-card__thumb" href="${this.escapeHTML(card.link_url || 'v1 contact.html')}" ${card.link_url && card.link_url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} aria-label="Enquire about ${this.escapeHTML(card.title)}">
+                  <a class="work-card__thumb" href="${thumbHref}" ${thumbTarget} aria-label="${hasExternalLink ? 'Visit' : 'Enquire about'} ${this.escapeHTML(card.title)}">
                     <img src="${this.escapeHTML(card.image_url)}" alt="${this.escapeHTML(card.title)}" width="960" height="600" loading="lazy" style="object-fit: cover; width: 100%; height: 100%;">
-                    <span class="tag ${badgeClass} work-card__badge">${this.escapeHTML(card.badge || 'Concept work')}</span>
+                    <span class="tag ${badgeClass} work-card__badge">${this.escapeHTML(card.badge || 'Sample')}</span>
                   </a>
                   <div class="work-card__body">
                     <div class="work-card__meta">
@@ -750,6 +769,12 @@
                     <p>${this.escapeHTML(card.problem || '')}</p>
                     ${card.outcome ? `<p class="outcome"><span style="color: var(--cta-gold);">→</span> ${this.escapeHTML(card.outcome)}</p>` : ''}
                     ${reviewMarkup}
+                    <div class="work-card__actions" style="margin-top: auto; padding-top: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+                      ${visitBtnMarkup}
+                      <a class="btn btn--ghost" href="v1 contact.html" style="padding: 0.55rem 1rem; font-size: 0.85rem;">
+                        Enquire →
+                      </a>
+                    </div>
                   </div>
                 </article>
               </div>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Services | Quill Labs</title>
+  <meta name="description" content="Explore Quill Labs services: Business Foundations, Experience Layers, and Growth paths with transparent pricing.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quill-labs-in.buildbyquill.workers.dev/services">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Quill Labs">
+  <meta property="og:title" content="Our Services | Quill Labs">
+  <meta property="og:description" content="Explore Quill Labs services: Business Foundations, Experience Layers, and Growth paths with transparent pricing.">
+  <meta property="og:url" content="https://quill-labs-in.buildbyquill.workers.dev/services">
+  <meta property="og:image" content="https://quill-labs-in.buildbyquill.workers.dev/circular%20logo.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Our Services | Quill Labs">
+  <meta name="twitter:description" content="Explore Quill Labs services: Business Foundations, Experience Layers, and Growth paths with transparent pricing.">
+  <meta name="twitter:image" content="https://quill-labs-in.buildbyquill.workers.dev/circular%20logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="preload" href="/css/main.css" as="style">
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+
+  <!-- Supabase JS CDN (Optional Cloud Sync) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Quill Labs",
+    "url": "https://quill-labs-in.buildbyquill.workers.dev",
+    "logo": "https://quill-labs-in.buildbyquill.workers.dev/circular%20logo.png",
+    "sameAs": [
+      "https://twitter.com/quilllabs",
+      "https://www.linkedin.com/company/quilllabs"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://quill-labs-in.buildbyquill.workers.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://quill-labs-in.buildbyquill.workers.dev/services"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="section--dark">
+
+  <!-- Top Brand & Navigation Bar -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="/" aria-label="Quill Labs — home">
+        <span class="brand">
+          <img loading="lazy" class="brand__mark" data-cms-src="brand_logo" src="./main quill.png" alt="Quill Logo" width="36" height="36">
+          <span class="brand__name"><span data-cms="brand_name">Quill Labs</span><span class="sys">.sys</span></span>
+        </span>
+      </a>
+
+      <!-- Top Glass Dock Navigation -->
+      <nav class="top-nav-dock" aria-label="Primary Navigation">
+        <a class="dock-item" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V10.5339C3 9.57062 3.46259 8.66591 4.24353 8.1019L10.2435 3.76856C11.2921 3.01128 12.7079 3.01128 13.7565 3.76856L19.7565 8.1019C20.5374 8.66591 21 9.57062 21 10.5339V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18Z"></path></svg>
+          <span>Home</span>
+        </a>
+        <a class="dock-item" href="/services" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          <span>Services</span>
+        </a>
+        <a class="dock-item" href="/ourprocess">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 9.39536 18.8605 7.3637 16C6.06474 14.1711 5 12.0475 5 10C5 6.134 8.134 3 12 3C15.866 3 19 6.134 19 10C19 12.0475 17.9353 14.1711 16.6363 16C14.6046 18.8605 12 21 12 21Z"></path></svg>
+          <span>Our Process</span>
+        </a>
+        <a class="dock-item" href="/about">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
+          <span>About</span>
+        </a>
+        <a class="dock-item" href="/contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+          <span>Contact</span>
+        </a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <a class="btn btn--primary" href="/contact">Book a strategy call</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Page Hero -->
+    <section class="section blueprint-grid" style="padding-bottom: 2rem;">
+      <div class="container">
+        <p class="mono-label reveal" style="margin-bottom: 1.5rem;"><a href="/" style="color: var(--cta-gold);">Home</a> / Services</p>
+        <div class="section-head reveal">
+          <span class="eyebrow">The offer</span>
+          <h1>Every service, priced up front.</h1>
+
+    
+          <p class="lede">A guided journey from "what do I need?" to "book the call" — tracks, foundations, layers, and growth paths, with transparent prices at every step.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6-Step Journey Overview -->
+    <section class="section section--tint" style="padding-block: 3.5rem;">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Where should you start?</span>
+          <h2>Six steps to a system that sells.</h2>
+          <p class="lede">Follow the journey in order — or jump straight to the step you need.</p>
+        </div>
+        <div class="sys-flow" style="grid-template-columns: repeat(6, 1fr);">
+          <div class="sys-node reveal" data-delay="0"><span>01</span><span>Choose Track</span></div>
+          <div class="sys-node reveal" data-delay="1"><span>02</span><span>Foundation</span></div>
+          <div class="sys-node reveal" data-delay="2"><span>03</span><span>Experience Layers</span></div>
+          <div class="sys-node reveal" data-delay="3"><span>04</span><span>Grow System</span></div>
+          <div class="sys-node reveal" data-delay="3"><span>05</span><span>Live Demos</span></div>
+          <div class="sys-node reveal sys-node--hot" data-delay="3"><span>06</span><span>Strategy Call</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Choose Your Track -->
+    <section class="section" id="tracks">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Choose your track</span>
+          <h2>Start with the business, not the tech.</h2>
+          <p class="lede">Two tracks, each with a clear outcome and a complete starting package.</p>
+        </div>
+        <div class="track-tabs">
+          <div class="track-card track-card--business reveal" data-delay="0" id="business">
+            <span class="mono-label">Track 1 — Local Business Launch</span>
+            <h3>Local Business Launch</h3>
+            <p>For established local businesses that need a professional digital presence.</p>
+            <div class="track-split">
+              <div>
+                <span class="tier-problem-label">Outcome</span>
+                <ul class="list-check">
+                  <li>Professional website</li>
+                  <li>Lead generation</li>
+                  <li>Trust & credibility</li>
+                  <li>Customer enquiries</li>
+                </ul>
+              </div>
+              <div>
+                <span class="tier-problem-label">Included</span>
+                <ul class="list-check">
+                  <li>Strategy Session</li>
+                  <li>Website Foundation</li>
+                  <li>SEO Basics</li>
+                  <li>WhatsApp Integration</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="track-card track-card--creator reveal" data-delay="1" id="creator">
+            <span class="mono-label">Track 2 — Creator Launch</span>
+            <h3>Creator Launch</h3>
+            <p>For creators turning audiences into businesses.</p>
+            <div class="track-split">
+              <div>
+                <span class="tier-problem-label">Outcome</span>
+                <ul class="list-check">
+                  <li>Custom website hub</li>
+                  <li>Digital products</li>
+                  <li>Lead capture & list</li>
+                  <li>Monetization flow</li>
+                </ul>
+              </div>
+              <div>
+                <span class="tier-problem-label">Included</span>
+                <ul class="list-check">
+                  <li>Strategy Session</li>
+                  <li>Website Foundation</li>
+                  <li>Product Hub</li>
+                  <li>Newsletter Setup</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Website Foundations -->
+    <section class="section section--tint" id="foundations">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Website Foundations</span>
+          <h2>Three foundations. Transparent prices.</h2>
+          <p class="lede">The core products. Every card shows starting price, timeline, who it's for, and the outcome.</p>
+        </div>
+        <div class="pricing-grid" data-cms-products>
+          <!-- Foundation 1 -->
+          <div class="pricing-card reveal" data-delay="0">
+            <span class="feat-card__num">01 — Website Foundation</span>
+            <h3>Motion Website</h3>
+            <p class="pricing-card__price"><span class="pricing-card__from">Starting from</span>₹5,999</p>
+            <div class="pricing-card__meta">
+              <span class="tier-problem-label">Timeline</span>
+              <span class="pricing-card__meta-value">7–10 Days</span>
+            </div>
+            <div class="pricing-card__meta">
+              <span class="tier-problem-label">Best for</span>
+              <span class="pricing-card__meta-value">Modern businesses · Agencies</span>
+            </div>
+            <p class="pricing-card__desc">Purposeful animations that improve engagement without sacrificing speed.</p>
+            <div class="pricing-card__cta">
+              <a class="btn btn--ghost" href="#demos">View Demo</a>
+              <a class="btn btn--primary" href="/contact">Book Strategy Call</a>
+            </div>
+          </div>
+
+          <!-- Foundation 2 -->
+          <div class="pricing-card reveal" data-delay="1">
+            <span class="feat-card__num">02 — Website Foundation</span>
+            <h3>Editorial Website</h3>
+            <p class="pricing-card__price"><span class="pricing-card__from">Starting from</span>₹9,999</p>
+            <div class="pricing-card__meta">
+              <span class="tier-problem-label">Timeline</span>
+              <span class="pricing-card__meta-value">10–14 Days</span>
+            </div>
+            <div class="pricing-card__meta">
+              <span class="tier-problem-label">Best for</span>
+              <span class="pricing-card__meta-value">Premium brands · Creators</span>
+            </div>
+            <p class="pricing-card__desc">Editorial storytelling that positions expertise and communicates quality.</p>
+            <div class="pricing-card__cta">
+              <a class="btn btn--ghost" href="#demos">View Demo</a>
+              <a class="btn btn--primary" href="/contact">Book Strategy Call</a>
+            </div>
+          </div>
+
+          <!-- Foundation 3 -->
+          <div class="pricing-card reveal" data-delay="2">
+            <span class="feat-card__num">03 — Website Foundation</span>
+            <h3>Scroll Storytelling Website</h3>
+            <p class="pricing-card__price"><span class="pricing-card__from">Starting from</span>₹24,999</p>
+            <div class="pricing-card__meta">
+              <span class="tier-problem-label">Timeline</span>
+              <span class="pricing-card__meta-value">2–4 Weeks</span>
+            </div>
+            <div class="pricing-card__meta">
+              <span class="tier-problem-label">Best for</span>
+              <span class="pricing-card__meta-value">Launches · Campaigns</span>
+            </div>
+            <p class="pricing-card__desc">Narrative-driven experiences that guide visitors toward action.</p>
+            <div class="pricing-card__cta">
+              <a class="btn btn--ghost" href="#demos">View Demo</a>
+              <a class="btn btn--primary" href="/contact">Book Strategy Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Layers -->
+    <section class="section" id="layers">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Experience Layers</span>
+          <h2>Optional upgrades for any foundation.</h2>
+          <p class="lede">Add depth when the experience calls for it.</p>
+        </div>
+        <div class="feat-grid">
+          <div class="feat-card reveal" data-delay="0">
+            <span class="feat-card__num">01</span>
+            <h3>Interactive Layer</h3>
+            <p>Interactive experiences that encourage exploration.</p>
+            <p class="pricing-card__price pricing-card__price--inline"><span class="pricing-card__from">Starting from</span>₹5,000</p>
+          </div>
+          <div class="feat-card reveal" data-delay="1">
+            <span class="feat-card__num">02</span>
+            <h3>AI Layer</h3>
+            <p>Smart assistants, automation, FAQs and customer support.</p>
+            <p class="pricing-card__price pricing-card__price--inline"><span class="pricing-card__from">Starting from</span>₹8,000</p>
+          </div>
+          <div class="feat-card reveal" data-delay="2">
+            <span class="feat-card__num">03</span>
+            <h3>Immersive Layer (3D & WebGL)</h3>
+            <p>Immersive product visualization and interactive experiences.</p>
+            <p class="pricing-card__price pricing-card__price--inline"><span class="pricing-card__from">Starting from</span>₹10,000</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- See Our Work / Spec Projects & Samples -->
+    <section class="section section--tint" id="work">
+      <div id="demos" style="position: absolute; top: -2rem;"></div>
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Spec Projects &amp; Samples</span>
+          <h2>See our work</h2>
+          <p class="lede">Explore our spec projects and sample systems — then we build the same standard for your business.</p>
+        </div>
+        
+        <div class="work-grid" data-cms-work-cards data-show-all="true">
+          <article class="work-card reveal" data-delay="0" data-track="business">
+            <a class="work-card__thumb" href="https://nukkar-dhaba.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/projects/nukkar-dhaba.jpg" alt="Nukkar Dhaba restaurant website demo" width="960" height="600" loading="lazy">
+              <span class="tag tag--sample work-card__badge">Sample</span>
+            </a>
+            <div class="work-card__body">
+              <div class="work-card__meta">
+                <span class="tag tag--business">Local Business Launch</span>
+                <span class="mono-label">Restaurant Website</span>
+              </div>
+              <h3>Nukkar Dhaba</h3>
+              <p>Authentic flavours, hearty meals, and the warmth of a traditional Nukkar Dhaba.</p>
+              <div class="work-card__cta" style="margin-top: auto; padding-top: 1rem;">
+                <a class="btn btn--primary" href="https://nukkar-dhaba.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer">Visit Site ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card reveal" data-delay="1" data-track="business">
+            <a class="work-card__thumb" href="https://novelty-restaurant.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/projects/novelty-restaurant.png" alt="Novelty Restaurant website demo" width="960" height="600" loading="lazy">
+              <span class="tag tag--sample work-card__badge">Sample</span>
+            </a>
+            <div class="work-card__body">
+              <div class="work-card__meta">
+                <span class="tag tag--business">Local Business Launch</span>
+                <span class="mono-label">Restaurant Website</span>
+              </div>
+              <h3>Novelty Restaurant</h3>
+              <p>For generations, Novelty Restaurant has brought the warmth, richness and character of North Indian cuisine to Chandigarh.</p>
+              <div class="work-card__cta" style="margin-top: auto; padding-top: 1rem;">
+                <a class="btn btn--primary" href="https://novelty-restaurant.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer">Visit Site ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card reveal" data-delay="2" data-track="business">
+            <a class="work-card__thumb" href="https://frontier-raas.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/projects/frontier-raas.png" alt="FrontierRaas luxury couture demo" width="960" height="600" loading="lazy">
+              <span class="tag tag--sample work-card__badge">Sample</span>
+            </a>
+            <div class="work-card__body">
+              <div class="work-card__meta">
+                <span class="tag tag--business">Local Business Launch</span>
+                <span class="mono-label">Couture Website</span>
+              </div>
+              <h3>FrontierRaas</h3>
+              <p>Exquisite Indian and Indo-Western fashion, thoughtfully customized for weddings, celebrations, and unforgettable occasions.</p>
+              <div class="work-card__cta" style="margin-top: auto; padding-top: 1rem;">
+                <a class="btn btn--primary" href="https://frontier-raas.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer">Visit Site ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Band -->
+    <section class="cta-band">
+      <div class="blueprint-grid" style="position: absolute; inset: 0" aria-hidden="true"></div>
+      <div class="container" style="position: relative; padding-block: clamp(4.5rem, 9vw, 7rem)">
+        <div class="cta-band__inner reveal">
+          <span class="eyebrow">Next step</span>
+          <h2>Let's identify the biggest gap.</h2>
+          <p class="lede">We start every project with a strategy call — not a quote. Bring your current website, your customer journey, and the questions you keep answering by hand.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/contact">Book a strategy call</a>
+            <a class="btn btn--ghost-light" href="/contact#form">Send an enquiry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <span class="brand">
+            <img loading="lazy" class="brand__mark" src="./main quill.png" alt="Quill Labs" width="32" height="32">
+            <span class="brand__name">Quill Labs<span class="sys">.sys</span></span>
+          </span>
+          <p class="site-footer__tagline">Connect the Value. Capture the Sale.</p>
+          <p class="site-footer__statement">We don't build websites. We build business systems that connect attention to revenue.</p>
+          <a class="btn btn--primary" href="/contact">Book a strategy call</a>
+        </div>
+        <nav aria-label="Footer — studio">
+          <h3>Studio</h3>
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/ourprocess">Our Process</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="admin.html" style="color: var(--cta-gold); font-weight: 600;">Admin / CMS ↗</a>
+        </nav>
+        <div>
+          <h3>Tracks</h3>
+          <a href="/services#business">Local Business Launch</a>
+          <a href="/services#creator">Creator Launch</a>
+          <a href="mailto:buildbyquill@gmail.com">buildbyquill@gmail.com</a>
+        </div>
+        <div class="site-footer__cta">
+          <h3>Get started</h3>
+          <p>A free strategy call. No pitch deck, no obligation.</p>
+          <a class="btn btn--ghost-light" href="/contact">Start here</a>
+          <p class="mono-label" style="margin-top: 0.5rem;">Response within one business day</p>
+        </div>
+      </div>
+      <div class="site-footer__bar">
+        <span>© 2026 Quill Labs — Business Systems Studio</span>
+        <span>quill-labs-in.buildbyquill.workers.dev</span>
+        <span>Built with the Quill Labs Method</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quill Labs CMS Client Engine -->
+  <script src="./js/cms-client.js" defer></script>
+  <!-- Interactive Components JS -->
+  <script src="./js/components.js" defer></script>
+</body>
+</html>
+

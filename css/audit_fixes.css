@@ -1,0 +1,17 @@
+/* Audit Fixes – Minimal utilities */
+/* 1. Hero CTA spacing */
+.header-actions { display: flex; gap: 1rem; }
+/* 2. System diagram label no‑wrap */
+.sys-node span { white-space: nowrap; }
+/* 3. Truncate portfolio blockquotes */
+.work-card blockquote { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+/* 4. Standardize portfolio image height */
+.work-card__thumb img { width: 100%; height: 200px; object-fit: cover; }
+/* 5. Consistent primary button width */
+.btn--primary { min-width: 12rem; }
+/* 6. Reduce hero wordmark size */
+.hero__wordmark { max-width: 250px; width: 100%; height: auto; }
+/* 7. Tag font size */
+.tag { font-size: var(--fs-sm); }
+/* 8. Breadcrumb font size */
+.breadcrumbs { font-size: var(--fs-sm); }

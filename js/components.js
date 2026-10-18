@@ -2,10 +2,9 @@
  * QUILL LABS — INTERACTIVE ENGINE
  * Includes:
  * 1. 60fps Canvas Spotlight Cursor
- * 2. Day / Night Theme Controller (Synced across pages and local storage)
- * 3. Top Navigation Dock Active State & GSAP hover micro-animations
- * 4. Scroll Reveal & SVG Stroke drawing animations
- * 5. Spec Work Filter & Contact Form Mailto generator
+ * 2. Top Navigation Dock Active State & GSAP hover micro-animations
+ * 3. Scroll Reveal & SVG Stroke drawing animations
+ * 4. Spec Work Filter & Contact Form Mailto generator
  */
 
 (function () {
@@ -110,7 +109,7 @@
     });
 
     // Expand on hovering interactive elements
-    const interactiveElements = 'a, button, input, select, textarea, .tag, .sys-node, .theme-switch, .color-chip, .admin-tab';
+    const interactiveElements = 'a, button, input, select, textarea, .tag, .sys-node, .color-chip, .admin-tab';
     document.addEventListener('mouseover', (e) => {
       if (e.target.closest(interactiveElements)) {
         targetScale = 1.65;
@@ -187,46 +186,22 @@
 
   }
 
-  // =========================================================================
-  // 2. DAY / NIGHT THEME CONTROLLER
-  // =========================================================================
-  function initThemeController() {
-    const savedTheme = localStorage.getItem('quill_theme') || 'dark';
-    const checkboxes = document.querySelectorAll('.theme-switch__checkbox');
-
-    function applyTheme(theme) {
-      if (theme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        checkboxes.forEach(cb => cb.checked = true);
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        checkboxes.forEach(cb => cb.checked = false);
-      }
-      localStorage.setItem('quill_theme', theme);
-    }
-
-    // Initialize state
-    applyTheme(savedTheme);
-
-    // Listen for toggle changes
-    checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', (e) => {
-        const nextTheme = e.target.checked ? 'light' : 'dark';
-        applyTheme(nextTheme);
-      });
-    });
-  }
+  // Ensure clean dark theme state without leftover attributes
+  try {
+    localStorage.removeItem('quill_theme');
+    document.documentElement.removeAttribute('data-theme');
+  } catch (e) {}
 
   // =========================================================================
   // 3. TOP NAV DOCK MICRO-ANIMATIONS
   // =========================================================================
   function initTopNavDock() {
     const dockItems = document.querySelectorAll('.top-nav-dock .dock-item');
-    const currentPath = window.location.pathname.split('/').pop() || 'v1home.html';
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 
     dockItems.forEach(item => {
       const href = item.getAttribute('href');
-      if (href && (currentPath.includes(href) || (currentPath === '' && href === 'v1home.html') || (currentPath === 'index.html' && href === 'v1home.html'))) {
+      if (href && (currentPath.includes(href) || (currentPath === '' && href === 'index.html') || (currentPath === 'index.html' && href === 'index.html'))) {
         item.classList.add('is-active');
       }
 
@@ -372,7 +347,6 @@
   // =========================================================================
   document.addEventListener('DOMContentLoaded', () => {
     // initSpringMouseFollow(); // Disabled custom spring cursor
-    initThemeController();
     initTopNavDock();
     initScrollObserver();
     initWorkFilter();

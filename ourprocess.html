@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Process | Quill Labs</title>
+  <meta name="description" content="Learn how Quill Labs delivers projects — from discovery and design to development, testing, and launch.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quill-labs-in.buildbyquill.workers.dev/ourprocess">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Quill Labs">
+  <meta property="og:title" content="Our Process | Quill Labs">
+  <meta property="og:description" content="Learn how Quill Labs delivers projects — from discovery and design to development, testing, and launch.">
+  <meta property="og:url" content="https://quill-labs-in.buildbyquill.workers.dev/ourprocess">
+  <meta property="og:image" content="https://quill-labs-in.buildbyquill.workers.dev/circular%20logo.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Our Process | Quill Labs">
+  <meta name="twitter:description" content="Learn how Quill Labs delivers projects — from discovery and design to development, testing, and launch.">
+  <meta name="twitter:image" content="https://quill-labs-in.buildbyquill.workers.dev/circular%20logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="preload" href="/css/main.css" as="style">
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+
+  <!-- Supabase JS CDN (Optional Cloud Sync) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Quill Labs",
+    "url": "https://quill-labs-in.buildbyquill.workers.dev",
+    "logo": "https://quill-labs-in.buildbyquill.workers.dev/circular%20logo.png",
+    "sameAs": [
+      "https://twitter.com/quilllabs",
+      "https://www.linkedin.com/company/quilllabs"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://quill-labs-in.buildbyquill.workers.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Our Process",
+        "item": "https://quill-labs-in.buildbyquill.workers.dev/ourprocess"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="section--dark">
+
+  <!-- Top Brand & Navigation Bar -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="/" aria-label="Quill Labs — home">
+        <span class="brand">
+          <img loading="lazy" class="brand__mark" data-cms-src="brand_logo" src="./main quill.png" alt="Quill Logo" width="36" height="36">
+          <span class="brand__name"><span data-cms="brand_name">Quill Labs</span><span class="sys">.sys</span></span>
+        </span>
+      </a>
+
+      <!-- Top Glass Dock Navigation -->
+      <nav class="top-nav-dock" aria-label="Primary Navigation">
+        <a class="dock-item" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V10.5339C3 9.57062 3.46259 8.66591 4.24353 8.1019L10.2435 3.76856C11.2921 3.01128 12.7079 3.01128 13.7565 3.76856L19.7565 8.1019C20.5374 8.66591 21 9.57062 21 10.5339V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18Z"></path></svg>
+          <span>Home</span>
+        </a>
+        <a class="dock-item" href="/services">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          <span>Services</span>
+        </a>
+        <a class="dock-item" href="/ourprocess">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 9.39536 18.8605 7.3637 16C6.06474 14.1711 5 12.0475 5 10C5 6.134 8.134 3 12 3C15.866 3 19 6.134 19 10C19 12.0475 17.9353 14.1711 16.6363 16C14.6046 18.8605 12 21 12 21Z"></path></svg>
+          <span>Our Process</span>
+        </a>
+        <a class="dock-item" href="/about">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
+          <span>About</span>
+        </a>
+        <a class="dock-item" href="/contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+          <span>Contact</span>
+        </a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <a class="btn btn--primary" href="/contact">Book a strategy call</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Page Hero -->
+    <section class="section blueprint-grid" style="padding-bottom: 2rem;">
+      <div class="container">
+        <p class="mono-label reveal" style="margin-bottom: 1.5rem;"><a href="/" style="color: var(--cta-gold);">Home</a> / Our Process</p>
+        <div class="section-head reveal">
+          <span class="eyebrow">How we work</span>
+          <h1>Why you should trust the process.</h1>
+          <p class="lede">A structured method, a proven framework, sample work, and a build process with no surprises.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Website OS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How we work</span>
+          <h2>The Website OS.</h2>
+          <p class="lede">Six stages, one job each. A structured process is what makes results predictable.</p>
+        </div>
+        <section class="flow" aria-label="The BuildWithQuill method, six stages">
+          <div class="flow__node reveal" data-delay="0">
+            <h3>Research</h3>
+            <p>We study the market, the audience, and the problem before anything is designed.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="1">
+            <h3>Strategy</h3>
+            <p>We map the message, the funnel, and the outcome the site must produce.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="2">
+            <h3>Content</h3>
+            <p>We shape the words and structure that will carry the story.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="3">
+            <h3>Design</h3>
+            <p>We design around the content and the conversion path.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="3">
+            <h3>Development</h3>
+            <p>We build fast, with performance and accessibility baked in.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="3">
+            <h3>Launch</h3>
+            <p>We ship, measure, and iterate using real data.</p>
+          </div>
+        </section>
+        <p class="annot annot--fig">FIG. 03 — THE BUILDWITHQUILL WEBSITE OS</p>
+      </div>
+    </section>
+
+    <!-- 4-Move Framework -->
+    <section class="section section--tint">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Framework</span>
+          <h2>Every project is designed around four moves.</h2>
+          <p class="lede">Attention, trust, action, growth. If any step is weak, the system leaks.</p>
+        </div>
+        <div class="flow">
+          <div class="flow__node reveal" data-delay="0">
+            <h3>Attention</h3>
+            <p>Earning the first look — the page, ad, or post that stops the scroll.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="1">
+            <h3>Trust</h3>
+            <p>Credibility built through design, content, and proof.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="2">
+            <h3>Action</h3>
+            <p>The clear step that turns interest into an enquiry or a sale.</p>
+          </div>
+          <span class="flow__connector" aria-hidden="true"></span>
+          <div class="flow__node reveal" data-delay="3">
+            <h3>Growth</h3>
+            <p>Systems and automation that scale what works.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spec Projects Showcase with Filtering -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Projects</span>
+          <h2>Spec projects and concepts.</h2>
+          <p class="lede">Sample work built with the same method we'd use on yours. Real client projects will join them as they launch.</p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar reveal" role="group" aria-label="Filter projects by track">
+          <button class="filter-btn is-active" type="button" data-filter="business">Business</button>
+        </div>
+
+        <div class="work-grid" data-work-grid data-cms-work-cards data-show-all="true">
+          <!-- Sample 1 -->
+          <div class="reveal" data-delay="0" data-track="business">
+            <article class="work-card">
+              <a class="work-card__thumb" href="https://nukkar-dhaba.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer" aria-label="Visit Nukkar Dhaba site">
+                <img src="./assets/projects/nukkar-dhaba.jpg" alt="Nukkar Dhaba restaurant website designed by Quill Labs" width="960" height="600" loading="lazy" style="object-fit: cover; width: 100%; height: 100%;">
+                <span class="tag tag--sample work-card__badge">Sample</span>
+              </a>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="tag tag--business">Local Business Launch</span>
+                  <span class="mono-label">Restaurant Website</span>
+                </div>
+                <h3>Nukkar Dhaba</h3>
+                <p>Authentic flavours, hearty meals, and the warmth of a traditional Nukkar Dhaba.</p>
+                <p class="outcome"><span style="color: var(--cta-gold);">→</span> Built for authentic flavours and real people.</p>
+                <figure class="client-review reveal is-inview" data-delay="1" style="margin-top: 1.25rem; padding: 1rem 1.25rem; border-left: 3px solid var(--cta-gold); background: rgba(216, 144, 50, 0.04); border-radius: 0 8px 8px 0;">
+                  <div class="client-review__stars" aria-label="★★★★★" style="color: var(--cta-gold); font-size: 0.95rem; letter-spacing: 0.1em;">★★★★★</div>
+                  <blockquote style="font-size: 0.9rem; line-height: 1.6; margin-top: 0.4rem; color: var(--text-primary); font-style: italic;">“The website gives Nukkar Dhaba exactly the kind of warm, authentic feel we wanted. The food imagery, typography, and overall experience make the brand feel much more premium while still keeping its traditional identity.”</blockquote>
+                  <figcaption style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.4rem;">— <strong>Restaurant Owner, Nukkar Dhaba</strong></figcaption>
+                </figure>
+                <div class="work-card__actions" style="margin-top: auto; padding-top: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+                  <a class="btn btn--primary" href="https://nukkar-dhaba.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer" style="padding: 0.55rem 1.1rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                    <span>Visit Site</span> <span style="font-family: var(--font-mono, monospace);">↗</span>
+                  </a>
+                  <a class="btn btn--ghost" href="/contact" style="padding: 0.55rem 1rem; font-size: 0.85rem;">Enquire →</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Sample 2 -->
+          <div class="reveal" data-delay="1" data-track="business">
+            <article class="work-card">
+              <a class="work-card__thumb" href="https://novelty-restaurant.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer" aria-label="Visit Novelty Restaurant site">
+                <img src="./assets/projects/novelty-restaurant.png" alt="Novelty Restaurant website" width="960" height="600" loading="lazy" style="object-fit: cover; width: 100%; height: 100%;">
+                <span class="tag tag--sample work-card__badge">Sample</span>
+              </a>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="tag tag--business">Local Business Launch</span>
+                  <span class="mono-label">Restaurant Website</span>
+                </div>
+                <h3>Novelty Restaurant</h3>
+                <p>For generations, Novelty Restaurant has brought the warmth, richness and character of North Indian cuisine to Chandigarh.</p>
+                <p class="outcome"><span style="color: var(--cta-gold);">→</span> Built for authentic flavours and timeless experiences.</p>
+                <figure class="client-review reveal is-inview" data-delay="1" style="margin-top: 1.25rem; padding: 1rem 1.25rem; border-left: 3px solid var(--cta-gold); background: rgba(216, 144, 50, 0.04); border-radius: 0 8px 8px 0;">
+                  <div class="client-review__stars" aria-label="★★★★★" style="color: var(--cta-gold); font-size: 0.95rem; letter-spacing: 0.1em;">★★★★★</div>
+                  <blockquote style="font-size: 0.9rem; line-height: 1.6; margin-top: 0.4rem; color: var(--text-primary); font-style: italic;">“The new website captures the heritage of Novelty beautifully. It feels elegant, modern, and easy to navigate, while the visual storytelling does a great job of communicating the restaurant’s legacy.”</blockquote>
+                  <figcaption style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.4rem;">— <strong>Restaurant Owner, Novelty Restaurant</strong></figcaption>
+                </figure>
+                <div class="work-card__actions" style="margin-top: auto; padding-top: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+                  <a class="btn btn--primary" href="https://novelty-restaurant.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer" style="padding: 0.55rem 1.1rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                    <span>Visit Site</span> <span style="font-family: var(--font-mono, monospace);">↗</span>
+                  </a>
+                  <a class="btn btn--ghost" href="/contact" style="padding: 0.55rem 1rem; font-size: 0.85rem;">Enquire →</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Sample 3 -->
+          <div class="reveal" data-delay="2" data-track="business">
+            <article class="work-card">
+              <a class="work-card__thumb" href="https://frontier-raas.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer" aria-label="Visit FrontierRaas site">
+                <img src="./assets/projects/frontier-raas.png" alt="FrontierRaas couture website" width="960" height="600" loading="lazy" style="object-fit: cover; width: 100%; height: 100%;">
+                <span class="tag tag--sample work-card__badge">Sample</span>
+              </a>
+              <div class="work-card__body">
+                <div class="work-card__meta">
+                  <span class="tag tag--business">Local Business Launch</span>
+                  <span class="mono-label">Couture Website</span>
+                </div>
+                <h3>FrontierRaas</h3>
+                <p>Exquisite Indian and Indo-Western fashion, thoughtfully customized for weddings, celebrations, and unforgettable occasions.</p>
+                <p class="outcome"><span style="color: var(--cta-gold);">→</span> Built for luxury fashion, tradition and you.</p>
+                <figure class="client-review reveal is-inview" data-delay="1" style="margin-top: 1.25rem; padding: 1rem 1.25rem; border-left: 3px solid var(--cta-gold); background: rgba(216, 144, 50, 0.04); border-radius: 0 8px 8px 0;">
+                  <div class="client-review__stars" aria-label="★★★★☆" style="color: var(--cta-gold); font-size: 0.95rem; letter-spacing: 0.1em;">★★★★☆</div>
+                  <blockquote style="font-size: 0.9rem; line-height: 1.6; margin-top: 0.4rem; color: var(--text-primary); font-style: italic;">“The website feels premium from the first screen. The design brings together our craftsmanship, luxury positioning, and cultural identity without making the experience feel overwhelming. A very polished result.”</blockquote>
+                  <figcaption style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.4rem;">— <strong>Founder, FrontierRaas</strong></figcaption>
+                </figure>
+                <div class="work-card__actions" style="margin-top: auto; padding-top: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+                  <a class="btn btn--primary" href="https://frontier-raas.jaiozas544.workers.dev/" target="_blank" rel="noopener noreferrer" style="padding: 0.55rem 1.1rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                    <span>Visit Site</span> <span style="font-family: var(--font-mono, monospace);">↗</span>
+                  </a>
+                  <a class="btn btn--ghost" href="/contact" style="padding: 0.55rem 1rem; font-size: 0.85rem;">Enquire →</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Build Process / Experience -->
+    <section class="section section--dark">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Build process</span>
+          <h2>What working with us feels like.</h2>
+        </div>
+        <div class="value-list">
+          <div class="value-cell reveal" data-delay="0">
+            <h3>Timelines</h3>
+            <p>Every foundation has a published timeline — 5 days to 4 weeks depending on the tier. You'll know the date before we start.</p>
+          </div>
+          <div class="value-cell reveal" data-delay="1">
+            <h3>Communication</h3>
+            <p>One direct line to the people building your system. No account managers, no layers.</p>
+          </div>
+          <div class="value-cell reveal" data-delay="2">
+            <h3>Revisions</h3>
+            <p>Structured feedback rounds at each stage, so changes are caught early and never snowball.</p>
+          </div>
+          <div class="value-cell reveal" data-delay="3">
+            <h3>Launch</h3>
+            <p>We deploy, hand over the keys, and stay to measure and refine using real data.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Band -->
+    <section class="cta-band">
+      <div class="blueprint-grid" style="position: absolute; inset: 0" aria-hidden="true"></div>
+      <div class="container" style="position: relative; padding-block: clamp(4.5rem, 9vw, 7rem)">
+        <div class="cta-band__inner reveal">
+          <span class="eyebrow">Next step</span>
+          <h2>Like what you see? Let's build one for your business.</h2>
+          <p class="lede">Sample work is just the start. A strategy call turns it into a system that captures your customers.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/contact">Book a strategy call</a>
+            <a class="btn btn--ghost-light" href="/contact#form">Send an enquiry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <span class="brand">
+            <img loading="lazy" class="brand__mark" src="./main quill.png" alt="Quill Labs" width="32" height="32">
+            <span class="brand__name">Quill Labs<span class="sys">.sys</span></span>
+          </span>
+          <p class="site-footer__tagline">Connect the Value. Capture the Sale.</p>
+          <p class="site-footer__statement">We don't build websites. We build business systems that connect attention to revenue.</p>
+          <a class="btn btn--primary" href="/contact">Book a strategy call</a>
+        </div>
+        <nav aria-label="Footer — studio">
+          <h3>Studio</h3>
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/ourprocess">Our Process</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="admin.html" style="color: var(--cta-gold); font-weight: 600;">Admin / CMS ↗</a>
+        </nav>
+        <div>
+          <h3>Tracks</h3>
+          <a href="/services#business">Local Business Launch</a>
+          <a href="/services#creator">Creator Launch</a>
+          <a href="mailto:buildbyquill@gmail.com">buildbyquill@gmail.com</a>
+        </div>
+        <div class="site-footer__cta">
+          <h3>Get started</h3>
+          <p>A free strategy call. No pitch deck, no obligation.</p>
+          <a class="btn btn--ghost-light" href="/contact">Start here</a>
+          <p class="mono-label" style="margin-top: 0.5rem;">Response within one business day</p>
+        </div>
+      </div>
+      <div class="site-footer__bar">
+        <span>© 2026 Quill Labs — Business Systems Studio</span>
+        <span>quill-labs-in.buildbyquill.workers.dev</span>
+        <span>Built with the Quill Labs Method</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quill Labs CMS Client Engine -->
+  <script src="./js/cms-client.js" defer></script>
+  <!-- Interactive Components JS -->
+  <script src="./js/components.js" defer></script>
+</body>
+</html>
+
