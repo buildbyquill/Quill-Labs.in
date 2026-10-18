@@ -6,3 +6,5 @@ wrangler.json
 wrangler.jsonc
 .gitignore
 .assetsignore
+workers-site
+workers-site/**

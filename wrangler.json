@@ -1,14 +1,5 @@
 {
-  "name": "quill-labs-in",
+  "name": "quill-labs",
   "compatibility_date": "2025-03-01",
-  "pages_build_output_dir": "./",
-  "build": {
-    "command": ""
-  },
-  "main": "workers-site/index.js",
-  "assets": {
-    "directory": "./",
-    "binding": "ASSETS",
-    "not_found_handling": "404-page"
-  }
+  "pages_build_output_dir": "./"
 }
